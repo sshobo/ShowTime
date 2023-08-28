@@ -77,3 +77,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# Cloudinary is used for storing files on cloud
+gem "cloudinary"
