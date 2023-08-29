@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_105214) do
+
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_110915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "studio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_crews_on_studio_id"
+    t.index ["user_id"], name: "index_crews_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.float "rating"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +82,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_105214) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+
+  add_foreign_key "crews", "studios"
+  add_foreign_key "crews", "users"
+  add_foreign_key "reviews", "users"
 
   create_table "videos", force: :cascade do |t|
     t.bigint "user_id", null: false
