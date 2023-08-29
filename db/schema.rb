@@ -11,28 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_110915) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_29_114412) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "crews", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "studio_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["studio_id"], name: "index_crews_on_studio_id"
-    t.index ["user_id"], name: "index_crews_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.float "rating"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,7 +41,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_110915) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
+  create_table "crews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "studio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_crews_on_studio_id"
+    t.index ["user_id"], name: "index_crews_on_user_id"
+  end
+
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.float "rating"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "video_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["video_id"], name: "index_reviews_on_video_id"
+  end
 
   create_table "studios", force: :cascade do |t|
     t.string "name"
@@ -84,10 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_110915) do
   end
 
 
-  add_foreign_key "crews", "studios"
-  add_foreign_key "crews", "users"
-  add_foreign_key "reviews", "users"
-
   create_table "videos", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "views"
@@ -103,6 +101,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_110915) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "crews", "studios"
+  add_foreign_key "crews", "users"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "videos"
   add_foreign_key "videos", "users"
-
 end
