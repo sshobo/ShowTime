@@ -1,0 +1,6 @@
+<h2>Hi, <%= current_user.first_name %></h2>
+<% if current_user.creator? %>
+<%= "You are a creator" %>
+<% else %>
+<%= "You are not a creator" %>
+<% end %>
