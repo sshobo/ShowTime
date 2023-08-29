@@ -13,6 +13,7 @@ class VideosController < ApplicationController
   # GET /videos/new
   def new
     @video = Video.new
+    @studios = Studio.all
   end
 
   # GET /videos/1/edit

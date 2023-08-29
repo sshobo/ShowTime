@@ -11,6 +11,8 @@
     <%= f.input :language %>
     <%= f.input :video_type %>
     <%= f.input :category %>
+    <%= f.input :studio_id, as: :select, collection: @studios, prompt: 'Do you want to upload on behalf of a production?', label: false %>
+    <%# <%= f.input :studio_id, :collection => Studio.all(:order => 'name'), :value_method => :id, :label_method => :name, :prompt => "Select Production House if you want to upload on behalf of a production" %> %>
     <%= f.input :thumbnail, as: :file %>
     <%= f.input :videofile, as: :file %>
     <%= f.submit class: "btn btn-primary" %>
