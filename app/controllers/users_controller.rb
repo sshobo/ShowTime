@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @videos = @user.videos
   end
 
   private
