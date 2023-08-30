@@ -1,6 +1,6 @@
 class Video < ApplicationRecord
   belongs_to :user
-  belongs_to :studio
+  belongs_to :studio, optional: true
   has_one_attached :thumbnail
   has_one_attached :videofile
 
