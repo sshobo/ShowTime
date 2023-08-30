@@ -1,11 +1,12 @@
 
- <h4>All other videos of  <%= @user.first_name %> </h4>
 
 
-<div id="videos" class="row thumbnails">
+
+<h4 class="text-center">All other videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
+
+
+<div class="thumbnails">
   <% @videos.each do |video| %>
-    <%= render 'video', video: video %>
+  <%= render 'video', video: video %>
   <% end %>
 </div>
-
- <%= link_to "Back to all users", users_path %>
