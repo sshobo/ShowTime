@@ -4,6 +4,7 @@
 # READ ME: there is not youtube video linked yet
 # READ ME: also creating to users Cecil as a viewer and Joan creator you can check the emails and password
 # READ ME: using Joan user in the videos user_id
+# READ ME: it takes a few seconds to run the file cause we uploading the img from the api
 
 require 'json'
 require 'open-uri'
@@ -83,17 +84,17 @@ top_movies_hash.each do |movie|
   create_video(movie, user_creator, "top_movies", "movie")
 end
 
-# trending_movies_hash.each do |movie|
-#   create_video(movie, user_creator, "trending_movies","movie")
-# end
+trending_movies_hash.each do |movie|
+ create_video(movie, user_creator, "trending_movies","movie")
+end
 
-# top_tv_hash.each do |tv|
-#   create_video(tv, user_creator, "top_tv","tv")
-# end
+top_tv_hash.each do |tv|
+  create_video(tv, user_creator, "top_tv","tv")
+end
 
-# trending_tv_hash.each do |tv|
-#   create_video(tv, user_creator, "trending_tv","tv")
-# end
+trending_tv_hash.each do |tv|
+  create_video(tv, user_creator, "trending_tv","tv")
+end
 
 Video.all.each do |video|
   puts "ID: #{video.id}"
