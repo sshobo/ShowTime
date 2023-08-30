@@ -5,5 +5,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @videos = Video.all
+    @video = Video.new
+    @studios = Studio.all
   end
 end
