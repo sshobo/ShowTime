@@ -34,5 +34,5 @@ class Video < ApplicationRecord
   ]
 
   validates :language, inclusion: Video::LANGUAGES
-  validates :categories, inclusion: Video::CATEGORIES
+  validates :category, inclusion: Video::CATEGORIES
 end
