@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :videos, dependent: :destroy
   has_many :crews
-  has_many :studios, through: :studios
+  has_many :studios, through: :crews
 end
