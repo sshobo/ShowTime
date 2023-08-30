@@ -1,7 +1,9 @@
 <div id="<%= dom_id video %>">
-
-<%  if video.videofile.attached? %>
-<%= cl_video_tag video.videofile.key, height:300, width: 400, :controls => true %>
-<% end %>
-<h4><%= video.title %></h4>
+<div class="col">
+      <%= link_to video_path(video), class: "text-decoration-none" do %>
+        <div class="video-card">
+          <%= cl_image_tag video.thumbnail.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
+        </div>
+      <% end %>
+    </div>
 </div>

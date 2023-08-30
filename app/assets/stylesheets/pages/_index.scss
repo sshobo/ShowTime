@@ -1,3 +1,65 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "registration";
+
+// #videos {
+//   display: flex;
+//   align-content: space-between;
+//   // flex-wrap: wrap;
+//   // justify-content: space-between;
+//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+//   gap: 20px;
+// }
+
+
+
+// .video-card {
+
+// //   // width: calc(33.33%); /* Adjust the width as needed */
+// //   // margin-bottom: 20px;
+// //   border: 1px solid #ccc;
+// //   padding: 10px;
+// //   box-sizing: border-box;
+// //   width: 100%;
+// }
+
+// .video-content {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// .video-thumbnail {
+//   max-width: 100%;
+//   height: auto;
+// }
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  flex-wrap: wrap;
+  margin: -10px; /* Adjust as needed */
+  justify-content: space-between;
+
+}
+
+.col {
+  flex: 1;
+  padding: 20px; /* Adjust as needed */
+  box-sizing: border-box;
+}
+
+.video-card {
+  // border: 1px solid #ccc;
+  // padding: 10px;
+  // box-sizing: border-box;
+  // size: cover;
+  width: 100%;
+}
+
+.video-thumbnail {
+  width: 100%;
+  object-fit: cover;
+  // height: 100%;
+}
