@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @video %>
+<%= cl_video_tag video.videofile.key, height:300, width: 400, :controls => true %>
 
 <div>
   <%= link_to "Edit this video", edit_video_path(@video) %> |
