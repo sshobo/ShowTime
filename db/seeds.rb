@@ -67,7 +67,7 @@ def create_video(movie, user_creator, category, video_type)
     category: category,
     description: movie["overview"]
   )
-  thumbnail_url = "https://image.tmdb.org/t/p/w500#{movie["poster_path"]}"
+  thumbnail_url = "https://image.tmdb.org/t/p/w500#{movie["backdrop_path"]}"
   begin
     thumbnail_io = URI.open(thumbnail_url)
     video.thumbnail.attach(
