@@ -45,16 +45,15 @@ user_creator = User.new(
   last_name: "Alemany",
   email: "joancreator@gmail.com",
   password: "123456",
-  creator: false
+  creator: true
 )
 
 user_viewer.save
 user_creator.save
 
-
 puts "Creating videos"
-
 def create_video(movie, user_creator, category, video_type)
+
   video = Video.new(
     title: movie["title"],
     views: movie["vote_count"],
@@ -63,35 +62,48 @@ def create_video(movie, user_creator, category, video_type)
     category: category,
     description: movie["overview"]
   )
-
-  video.user = user_creator
-
   thumbnail_url = "https://image.tmdb.org/t/p/w500#{movie["poster_path"]}"
-  thumbnail_io = URI.open(thumbnail_url)
-  video.thumbnail.attach(io: thumbnail_io, filename: "#{movie["title"]}_thumbnail.png", content_type: "image/png")
-
-  puts video.title
-  puts video.views
-  puts video.language
-  puts video.video_type
-  puts video.category
-  puts video.description
-
+  begin
+    thumbnail_io = URI.open(thumbnail_url)
+    video.thumbnail.attach(
+      io: thumbnail_io,
+      filename: "#{video.title}_thumbnail.png",
+      content_type: "image/png"
+    )
+  rescue OpenURI::HTTPError => e
+    puts "Error: #{e.message}"  # Display the error message
+  rescue StandardError => e
+    puts "An error occurred: #{e.message}"
+  end
+  video.user = user_creator
   video.save
 end
 
 top_movies_hash.each do |movie|
-  create_video(movie, user_creator, "top_movies","movie")
+  create_video(movie, user_creator, "top_movies", "movie")
 end
 
-trending_movies_hash.each do |movie|
-  create_video(movie, user_creator, "trending_movies","movie")
-end
+# trending_movies_hash.each do |movie|
+#   create_video(movie, user_creator, "trending_movies","movie")
+# end
 
-top_tv_hash.each do |tv|
-  create_video(tv, user_creator, "top_tv","tv")
-end
+# top_tv_hash.each do |tv|
+#   create_video(tv, user_creator, "top_tv","tv")
+# end
 
-trending_tv_hash.each do |tv|
-  create_video(tv, user_creator, "trending_tv","tv")
+# trending_tv_hash.each do |tv|
+#   create_video(tv, user_creator, "trending_tv","tv")
+# end
+
+Video.all.each do |video|
+  puts "ID: #{video.id}"
+  puts "User ID: #{video.user_id}"
+  puts "Views: #{video.views}"
+  puts "Title: #{video.title}"
+  puts "Language: #{video.language}"
+  puts "Video Type: #{video.video_type}"
+  puts "Category: #{video.category}"
+  puts "Description: #{video.description}"
+  puts "Studio ID: #{video.studio_id}"
+  puts "--------------------------------"
 end
