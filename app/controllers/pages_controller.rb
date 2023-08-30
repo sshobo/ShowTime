@@ -7,5 +7,6 @@ class PagesController < ApplicationController
   def dashboard
     @videos = Video.all
     @video = Video.new
+    @studios = Studio.all
   end
 end
