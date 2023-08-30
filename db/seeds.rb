@@ -54,9 +54,13 @@ user_creator.save
 
 puts "Creating videos"
 def create_video(movie, user_creator, category, video_type)
-
+  if video_type == "movie"
+    title = movie["title"]
+  else
+    title = movie["name"]
+  end
   video = Video.new(
-    title: movie["title"],
+    title: title,
     views: movie["vote_count"],
     language: movie["original_language"],
     video_type: video_type,
@@ -76,6 +80,7 @@ def create_video(movie, user_creator, category, video_type)
   rescue StandardError => e
     puts "An error occurred: #{e.message}"
   end
+  puts video.category
   video.user = user_creator
   video.save
 end
@@ -83,18 +88,17 @@ end
 top_movies_hash.each do |movie|
   create_video(movie, user_creator, "top_movies", "movie")
 end
-
 trending_movies_hash.each do |movie|
- create_video(movie, user_creator, "trending_movies","movie")
+  create_video(movie, user_creator, "trending_movies", "movie")
 end
-
 top_tv_hash.each do |tv|
-  create_video(tv, user_creator, "top_tv","tv")
+  create_video(tv, user_creator, "top_tv", "tv")
+end
+trending_tv_hash.each do |tv|
+  create_video(tv, user_creator, "trending_tv", "tv")
 end
 
-trending_tv_hash.each do |tv|
-  create_video(tv, user_creator, "trending_tv","tv")
-end
+puts "Displaying videos"
 
 Video.all.each do |video|
   puts "ID: #{video.id}"
