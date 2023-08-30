@@ -9,7 +9,13 @@ class Video < ApplicationRecord
   CATEGORIES = [
     'Drama',
     'Action',
-    'Horror'
+    'Horror',
+    'Documentary',
+    'Romance',
+    'Comedy',
+    'Thriller',
+    'Epic',
+    'Crime'
   ]
 
   LANGUAGES = [
