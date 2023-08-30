@@ -2,13 +2,24 @@
 
 <h1>Videos</h1>
 
-<div id="videos">
+<div id="videos" class="row">
   <% @videos.each do |video| %>
-    <%= render video %>
-    <p>
-      <%= link_to "Show this video", video %>
-    </p>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <% if video.thumbnail.attached? %>
+          <%= cl_image_tag video.thumbnail.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <%= image_tag "https://image.tmdb.org/t/p/w500/oyG9TL7FcRP4EZ9Vid6uKzwdndz.jpg", class: "card-img-top", alt: "Default Thumbnail" %>
+        <% end %>
+         <div class="card-body">
+          <h5 class="card-title"><%= video.title %></h5>
+          <p class="card-text"><%= video.description %></p>
+          <a href="#" class="btn btn-primary">Watch Now</a>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
+
 
 <%= link_to "New video", new_video_path %>

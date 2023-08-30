@@ -1,4 +1,5 @@
 <div id="<%= dom_id video %>">
+
 <%  if video.videofile.attached? %>
 <%= cl_video_tag video.videofile.key, height:300, width: 400, :controls => true %>
 <% end %>
