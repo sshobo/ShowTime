@@ -6,4 +6,33 @@ class Video < ApplicationRecord
 
   validates :title, presence: true
 
+  CATEGORIES = [
+    'Drama',
+    'Action',
+    'Horror'
+  ]
+
+  LANGUAGES = [
+    "English",
+    "French",
+    "Mandarin Chinese",
+    "Spanish",
+    "Hindi",
+    "Arabic",
+    "Bengali",
+    "Portuguese",
+    "Russian",
+    "Japanese",
+    "German",
+    "Telugu",
+    "Vietnamese",
+    "Marathi",
+    "Korean",
+    "Tamil",
+    "Italian",
+    "Turkish"
+  ]
+
+  validates :language, inclusion: Video::LANGUAGES
+  validates :categories, inclusion: Video::CATEGORIES
 end
