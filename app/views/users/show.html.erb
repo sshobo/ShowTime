@@ -1,6 +1,23 @@
 
 
+<div class="user-show-banner ">
+  <%= render 'video_show', video: @video %>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232" alt="Profile Picture" class="overlay">
+</div>
 
+<h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name + " " + @user.last_name %>'s Top 3 Picks</h4>
+
+<div class="container d-flex my-4 py-5 justify-content-center">
+  <div class="top-3 mx-3">
+    <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+  </div>
+  <div class="top-3 mx-3">
+    <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+  </div>
+  <div class="top-3 mx-3">
+    <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+  </div>
+</div>
 
 <h4 class="text-center">All other videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
 
