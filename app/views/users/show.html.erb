@@ -1,7 +1,12 @@
 
 
 <div class="user-show-banner ">
-  <%= render 'video_show', video: @video %>
+  <% if @user.videos.count > 0 %>
+    <%= render 'video_show', video: @video %>
+    <% else %>
+    <img src="https://img.freepik.com/free-vector/stylish-glowing-digital-red-lines-banner_1017-23964.jpg" alt="" width="100%", height="300px">
+  <% end %>
+
 
   <div class="user-card">
     <div class="overlay p-3 bg-secondary d-flex">
@@ -22,25 +27,29 @@
 
 </div>
 
-<h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name + " " + @user.last_name %>'s Top 3 Picks</h4>
+<% if @user.creator? %>
+  <h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name + " " + @user.last_name %>'s Top 3 Picks</h4>
 
-<div class="container d-flex my-4 py-5 justify-content-around">
-  <div class="top-3 mx-3">
-    <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+  <div class="container d-flex my-4 py-5 justify-content-around">
+    <div class="top-3 mx-3">
+      <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+    </div>
+    <div class="top-3 mx-3">
+      <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+    </div>
+    <div class="top-3 mx-3">
+      <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+    </div>
   </div>
-  <div class="top-3 mx-3">
-    <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
+
+  <h4 class="text-center">All other videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
+
+
+  <div class="thumbnails">
+    <% @videos.each do |video| %>
+    <%= render 'video', video: video %>
+    <% end %>
   </div>
-  <div class="top-3 mx-3">
-    <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
-  </div>
-</div>
-
-<h4 class="text-center">All other videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
-
-
-<div class="thumbnails">
-  <% @videos.each do |video| %>
-  <%= render 'video', video: video %>
-  <% end %>
-</div>
+  <% else %>
+  <h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name + " " + @user.last_name %> is not a creator</h4>
+<% end %>
