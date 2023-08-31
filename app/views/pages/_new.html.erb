@@ -11,6 +11,7 @@
     <%= f.input :language, collection: Video::LANGUAGES %>
     <%= f.input :video_type %>
     <%= f.input :category, collection: Video::CATEGORIES %>
+    <%= f.input :users, collection: @users, input_html: { multiple: true }, :label_method => :first_name, include_hidden: false %>
     <%= f.input :studio_id, collection: @studios %>
     <%= f.input :thumbnail, as: :file %>
     <%= f.input :videofile, as: :file %>

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # @videos = Video.where(user_id: @user.id)
     @videos = @user.videos
     @video = @user.videos.last
   end

@@ -7,8 +7,13 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @videos = Video.all
+    @users = User.all
+    @videos = Video.where(user_id: current_user.id)
     @video = Video.new
     @studios = Studio.all
+  end
+
+  def users_full_names
+    "#{first_name} #{last_name}"
   end
 end

@@ -31,8 +31,11 @@ class VideosController < ApplicationController
 
   # POST /videos or /videos.json
   def create
+    @cast = params[:video][:users].reject(&:empty?).map(&:to_i).map { |id| User.find { |user| user[:id] == id } }
+    # create[:users] = @cast
     @video = Video.new(video_params)
     @video.user = current_user
+    @video.users = @cast
     respond_to do |format|
       if @video.save
         format.html { redirect_to dashboard_path, notice: "Video was successfully created." }
@@ -75,6 +78,6 @@ class VideosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:title, :views, :category, :type, :description, :language, :studio_id, :thumbnail, :videofile)
+      params.require(:video).permit(:title, :views, :category, :video_type, :description, :language, :studio_id, :thumbnail, :videofile)
     end
 end
