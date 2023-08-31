@@ -1,25 +1,13 @@
 class Video < ApplicationRecord
   belongs_to :user
   belongs_to :studio, optional: true
+  has_many :videogenrejoins
+  has_many :genres, through: :videogenrejoins
   has_one_attached :thumbnail
   has_one_attached :videofile
 
   validates :title, presence: true
-
-  CATEGORIES = [
-    'Drama',
-    'Action',
-    'Horror',
-    'Documentary',
-    'Romance',
-    'Comedy',
-    'Thriller',
-    'Epic',
-    'Crime',
-    'TV',
-    'Trending_TV',
-    'Top_TV'
-  ]
+  validates :title, uniqueness: true
 
   LANGUAGES = [
     "English",
