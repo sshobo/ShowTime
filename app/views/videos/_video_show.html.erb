@@ -1,7 +1,7 @@
 <div id="<%= dom_id video %>">
 <% if video.videofile.attached? %>
   <%= cl_video_tag video.videofile.key, class: "show-video", :controls => true %>
-  <% end %>
+<% end %>
 </div>
 
 <div class="producer-user-container">
