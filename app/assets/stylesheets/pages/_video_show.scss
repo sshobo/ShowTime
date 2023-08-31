@@ -93,9 +93,16 @@
     top:72%;
     left:9%;
     z-index:1;
-    width: 150px;
+    border-radius: 15px;
 }
 
+#pfp {
+  width: 150px;
+}
 .poster {
   width: 300px;
+}
+
+.user-card {
+  background-color: black;
 }

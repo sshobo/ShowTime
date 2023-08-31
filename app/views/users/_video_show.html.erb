@@ -1,6 +1,6 @@
-<div id="<%= dom_id video %>" class="preview">
+<div id="<%= dom_id video %>" class="preview" >
 <% if video.videofile.attached? %>
-  <%= cl_video_tag video.videofile.key, class: "show-banner", :controls => false %>
+  <%= cl_video_tag video.videofile.key, class: "show-banner", :controls => false, autoplay: true %>
   <% end %>
 </div>
 
