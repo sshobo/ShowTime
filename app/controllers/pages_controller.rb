@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    sam = User.where(last_name: "Shobo")
-    @feature_video = Video.where(user: sam)
+    sam = User.find_by(last_name: "Shobo")
+    @feature_video = Video.find_by(user: sam)
   end
 
   def dashboard

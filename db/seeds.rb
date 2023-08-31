@@ -77,11 +77,11 @@ feature_video = Video.create(
   description: "Come along the journey with us to build the next revolutuonary app.",
   studio: le_wagon
 )
-feature_video.thumbnail.attach(
-  io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
-  filename: '10-12.jpg',
-  content_type: 'image/jpg'
-)
+# feature_video.thumbnail.attach( # image too large
+#   io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
+#   filename: '10-12.jpg',
+#   content_type: 'image/jpg'
+# )
 feature_video.videofile.attach(
   io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
   filename: '3 second video.mp4',
