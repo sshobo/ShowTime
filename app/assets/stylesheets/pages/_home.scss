@@ -1,1 +1,34 @@
 // Specific CSS for your home-page
+
+.home-page-banner {
+  position: relative;
+
+  h1 {
+    font-size: 30px;
+    color: white
+  }
+
+  .video-container {
+    height: calc(100vh - 82px); // depends on height of navabar
+    // @media only screen and (min-width: 1300px) {
+    //   height: 600px;
+    // }
+    display: flex;
+    align-items: center;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .banner-text {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    margin-left: 50px;
+  }
+}

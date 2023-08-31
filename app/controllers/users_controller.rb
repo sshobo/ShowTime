@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :set_video, only: %i[show]
 
   def index
@@ -7,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @videos = @user.videos
+    @video = @user.videos.last
   end
 
   private
