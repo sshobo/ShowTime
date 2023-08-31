@@ -16,6 +16,9 @@ class Video < ApplicationRecord
     'Thriller',
     'Epic',
     'Crime'
+    'TV',
+    'Trending_TV',
+    'Top_TV'
   ]
 
   LANGUAGES = [
@@ -39,6 +42,6 @@ class Video < ApplicationRecord
     "Turkish"
   ]
 
-  validates :language, inclusion: Video::LANGUAGES
-  validates :category, inclusion: Video::CATEGORIES
+  # validates :language, inclusion: Video::LANGUAGES
+  # validates :category, inclusion: Video::CATEGORIES
 end

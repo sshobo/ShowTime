@@ -2,13 +2,12 @@
 
 <h1>Videos</h1>
 
-<div id="videos">
-  <% @videos.each do |video| %>
-    <%= render video %>
-    <p>
-      <%= link_to "Show this video", video %>
-    </p>
-  <% end %>
-</div>
+
+   <div class="thumbnails">
+     <% @videos.each do |video| %>
+     <%= render 'video', video: video %>
+     <% end %>
+  </div>
+
 
 <%= link_to "New video", new_video_path %>
