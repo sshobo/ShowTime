@@ -2,7 +2,7 @@
 
 <div class="user-show-banner ">
   <%= render 'video_show', video: @video %>
-  <%# <img src="https://img.freepik.com/free-vector/stylish-glowing-digital-red-lines-banner_1017-23964.jpg" alt="" width="100%", height="300px"> %>
+
   <div class="user-card">
     <div class="overlay p-3 bg-secondary d-flex">
       <% if @user.profile.attached? %>
@@ -12,8 +12,8 @@
       <% end %>
 
       <div class="user-info mx-4 align-items-center align-middle my-auto">
-        <h4><%= @user.first_name + " " + @user.last_name %></h4>
-        <h4><%= "Actor" %></h4>
+        <h4 class="info-text"><%= @user.first_name + " " + @user.last_name %></h4>
+        <h4 class="info-text"><%= "Actor" %></h4>
       </div>
 
     </div>
@@ -24,7 +24,7 @@
 
 <h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name + " " + @user.last_name %>'s Top 3 Picks</h4>
 
-<div class="container d-flex my-4 py-5 justify-content-center">
+<div class="container d-flex my-4 py-5 justify-content-around">
   <div class="top-3 mx-3">
     <img src="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg" alt="" class="poster">
   </div>

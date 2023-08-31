@@ -5,6 +5,14 @@ class VideosController < ApplicationController
   # GET /videos or /videos.json
   def index
     @videos = Video.all
+    if params[:query].present?
+      @videos = @videos.where("title ILIKE ?", "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "videos/list", locals: {videos: @videos}, formats: [:html] }
+    end
   end
 
   # GET /videos/1 or /videos/1.json
