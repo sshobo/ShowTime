@@ -75,3 +75,34 @@
 .Movies {
     flex: 1;
 }
+
+.show-banner {
+  width: 100%;
+  height: 300px;
+  top: 0;
+
+}
+
+.user-show-banner { position:relative; }
+.user-show-banner video {
+    position:relative;
+    z-index:0;
+}
+.overlay {
+    position:absolute;
+    top:72%;
+    left:9%;
+    z-index:1;
+    border-radius: 15px;
+}
+
+#pfp {
+  width: 150px;
+}
+.poster {
+  width: 300px;
+}
+
+.user-card {
+  background-color: black;
+}
