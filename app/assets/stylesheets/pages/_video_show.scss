@@ -109,14 +109,16 @@
 }
 .overlay {
     position:absolute;
-    top:72%;
+    top:69%;
     left:9%;
     z-index:1;
     border-radius: 15px;
 }
 
-#pfp {
+.pfp {
   width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 .poster {
   width: 300px;
@@ -142,4 +144,9 @@
 
 .custom-link:hover {
   background-color: black;
+}
+.info-text {
+  color: white;
+  text-shadow: black 1.5px 1.5px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
