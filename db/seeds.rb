@@ -67,26 +67,26 @@ le_wagon = Studio.create(name: "LW Studios")
 puts "Creating videos..."
 
 # create feature video
-feature_video = Video.create(
-  user: sam,
-  views: 0,
-  title: "Hey Folks, it's ShowTime!",
-  language: 'English',
-  video_type: 'Film',
-  category: 'Documentary',
-  description: "Come along the journey with us to build the next revolutuonary app.",
-  studio: le_wagon
-)
-feature_video.thumbnail.attach(
-  io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
-  filename: '10-12.jpg',
-  content_type: 'image/jpg'
-)
-feature_video.videofile.attach(
-  io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
-  filename: '3 second video.mp4',
-  content_type: 'video/mp4'
-)
+# feature_video = Video.create(
+#   user: sam,
+#   views: 0,
+#   title: "Hey Folks, it's ShowTime!",
+#   language: 'English',
+#   video_type: 'Film',
+#   category: 'Documentary',
+#   description: "Come along the journey with us to build the next revolutuonary app.",
+#   studio: le_wagon
+# )
+# feature_video.thumbnail.attach(
+#   io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
+#   filename: '10-12.jpg',
+#   content_type: 'image/jpg'
+# )
+# feature_video.videofile.attach(
+#   io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
+#   filename: '3 second video.mp4',
+#   content_type: 'video/mp4'
+# )
 
 # create dummy videos
 def create_video(movie, user_creator, category, video_type)
