@@ -111,4 +111,5 @@
 .info-text {
   color: white;
   text-shadow: black 1.5px 1.5px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }

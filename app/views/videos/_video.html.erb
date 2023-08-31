@@ -4,6 +4,8 @@
         <div class="video-card">
           <% if video.thumbnail.attached? %>
           <%= cl_image_tag video.thumbnail.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
+          <% else %>
+          <%= ho %>
           <% end %>
         </div>
       <% end %>
