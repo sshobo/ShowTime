@@ -1,4 +1,3 @@
-
 # READ ME: using API TMDB(you can check the urls) for fetching movies and tv shows info, to create video models.
 # READ ME: for now we are no using categories intead we have top rated and trending.
 # READ ME: run this in the terminal export CLOUDINARY_URL=cloudinary://738767187456176:BxQ6TfZx0tXPj15g9nNLPPCItFk@dez1ybpgi if the seed ask for the cloudinary api_key
@@ -29,11 +28,19 @@ trending_tv_hash = JSON.parse(user_serialized)["results"]
 puts "Cleaning database..."
 
 Video.destroy_all
+Studio.destroy_all
 User.destroy_all
 
-puts "Creating users"
+puts "Creating users..."
 
-# create 2 users
+sam = User.create(
+  first_name: "Samuel",
+  last_name: "Shobo",
+  email: "sshobo@showtime.com",
+  password: "123456",
+  creator: true
+)
+
 user_viewer = User.new(
   first_name: "Cecil",
   last_name: "Sabi",
@@ -53,7 +60,35 @@ user_creator = User.new(
 user_viewer.save
 user_creator.save
 
-puts "Creating videos"
+puts "Creating studios..."
+
+le_wagon = Studio.create(name: "LW Studios")
+
+puts "Creating videos..."
+
+# create feature video
+feature_video = Video.create(
+  user: sam,
+  views: 0,
+  title: "Hey Folks, it's ShowTime!",
+  language: 'English',
+  video_type: 'Film',
+  category: 'Documentary',
+  description: "Come along the journey with us to build the next revolutuonary app.",
+  studio: le_wagon
+)
+feature_video.thumbnail.attach(
+  io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
+  filename: '10-12.jpg',
+  content_type: 'image/jpg'
+)
+feature_video.videofile.attach(
+  io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
+  filename: '3 second video.mp4',
+  content_type: 'video/mp4'
+)
+
+# create dummy videos
 def create_video(movie, user_creator, category, video_type)
   if video_type == "movie"
     title = movie["title"]

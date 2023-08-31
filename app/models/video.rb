@@ -10,6 +10,12 @@ class Video < ApplicationRecord
     'Drama',
     'Action',
     'Horror',
+    'Documentary',
+    'Romance',
+    'Comedy',
+    'Thriller',
+    'Epic',
+    'Crime'
     'TV',
     'Trending_TV',
     'Top_TV'
