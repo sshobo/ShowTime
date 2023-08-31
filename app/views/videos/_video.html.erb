@@ -2,7 +2,12 @@
 <div class="col">
       <%= link_to video_path(video), class: "text-decoration-none" do %>
         <div class="video-card">
+          <% if video.thumbnail.attached? %>
           <%= cl_image_tag video.thumbnail.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
+          <% end %>
+          <div class="title-container">
+            <h2 class="video-title"><%= video.title %> </h2>
+          </div>
         </div>
       <% end %>
     </div>

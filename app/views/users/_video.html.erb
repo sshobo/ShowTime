@@ -1,14 +1,11 @@
-<div class="col-md-4 mb-4">
-      <div class="card">
-        <% if video.thumbnail.attached? %>
-          <%= cl_image_tag video.thumbnail.key, height: 300, width: 400, crop: :fill %>
-        <% else %>
-          <%= image_tag "https://image.tmdb.org/t/p/w500/oyG9TL7FcRP4EZ9Vid6uKzwdndz.jpg", class: "card-img-top", alt: "Default Thumbnail" %>
-        <% end %>
-         <div class="card-body">
-          <h5 class="card-title"><%= video.title %></h5>
-          <p class="card-text"><%= video.description %></p>
-          <a href="#" class="btn btn-primary">Watch Now</a>
+<div id="<%= dom_id video %>">
+<div class="col">
+      <%= link_to video_path(video), class: "text-decoration-none" do %>
+        <div class="video-card">
+          <% if video.thumbnail.attached? %>
+          <%= cl_image_tag video.thumbnail.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
+          <% end %>
         </div>
-      </div>
+      <% end %>
     </div>
+</div>

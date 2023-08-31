@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="home-page-banner">
+  <div class="video-container">
+    <% if @feature_video.videofile.attached? %>
+      <%= cl_video_tag @feature_video.videofile.key, autoplay: :autoplay, loop: :loop %>
+    <% end %>
+    <div class="banner-text">
+      <h1>Continue watching for user</h1>
+      <p>Popular on ShowTime</p>
+      <p>Trending Now</p>
+    </div>
+  </div>
+</div>
