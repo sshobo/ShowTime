@@ -1,7 +1,5 @@
-<div id="<%= dom_id video %>" class="preview" >
+
+<div id="<%= dom_id video %>"></div>
 <% if video.videofile.attached? %>
   <%= cl_video_tag video.videofile.key, class: "show-banner", :controls => false, autoplay: true %>
-  <% else %>
-    <img src="https://img.freepik.com/free-vector/stylish-glowing-digital-red-lines-banner_1017-23964.jpg" alt="" width="100%", height="300px">
-  <% end %>
-</div>
+<% end %>
