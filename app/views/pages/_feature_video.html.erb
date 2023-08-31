@@ -1,0 +1,6 @@
+<div id="<%= dom_id @feature_video %>">
+<%  if @feature_video.videofile.attached? %>
+<%= cl_video_tag @feature_video.videofile.key, height:300, width: 400, :controls => true %>
+<% end %>
+<h4><%= @feature_video.title %></h4>
+</div>
