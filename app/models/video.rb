@@ -15,7 +15,7 @@ class Video < ApplicationRecord
     'Comedy',
     'Thriller',
     'Epic',
-    'Crime'
+    'Crime',
     'TV',
     'Trending_TV',
     'Top_TV'

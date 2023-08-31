@@ -90,7 +90,7 @@
 }
 .overlay {
     position:absolute;
-    top:72%;
+    top:69%;
     left:9%;
     z-index:1;
     border-radius: 15px;
@@ -98,6 +98,7 @@
 
 #pfp {
   width: 150px;
+  border-radius: 50%;
 }
 .poster {
   width: 300px;
@@ -105,4 +106,9 @@
 
 .user-card {
   background-color: black;
+}
+
+.info-text {
+  color: white;
+  text-shadow: black 1.5px 1.5px;
 }
