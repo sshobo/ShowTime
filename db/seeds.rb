@@ -148,3 +148,17 @@ Video.all.each do |video|
   puts "Studio ID: #{video.studio_id}"
   puts "--------------------------------"
 end
+
+Review.create!(
+  rating: 4,
+  content: "One can only imagine the chilling impact on oceanic circulation patterns as temperature and pressure interplay during the ascent from the depths of the Atlantic abyss to the coastal waters.",
+  user: User.first,
+  video: Video.last
+)
+
+Review.create!(
+  rating: 2,
+  content: "Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards",
+  user: User.second,
+  video: Video.last
+)
