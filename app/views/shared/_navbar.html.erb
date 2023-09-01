@@ -5,7 +5,7 @@
     <% end %>
 
     <div data-controller="search-videos" class="input-group d-flex justify-content-end">
-      <% if params[:controller] != "videos" && params[:action] != "index" %>
+      <% if  params[:action] != "index" %>
         <div>
           <%= form_with url: videos_path, method: :get, html: { class: "form-outline", data: { search_videos_target: "form" } } do |f| %>
           <%= f.text_field :query,
