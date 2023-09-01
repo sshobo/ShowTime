@@ -24,6 +24,8 @@ class VideosController < ApplicationController
   def new
     @video = Video.new
     @studios = Studio.all
+    @users = User.all
+    @genres = Genre.all
   end
 
   # GET /videos/1/edit

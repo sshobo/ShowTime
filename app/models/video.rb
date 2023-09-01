@@ -4,6 +4,8 @@ class Video < ApplicationRecord
   has_many :videogenrejoins
   has_many :genres, through: :videogenrejoins
   has_many :reviews
+  has_many :casts
+  has_many :users, through: :casts
   has_one_attached :thumbnail
   has_one_attached :videofile
 
