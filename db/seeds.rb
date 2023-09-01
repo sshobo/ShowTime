@@ -31,7 +31,7 @@ user_serialized = URI.open(tv_genres_api_url, 'Authorization' => 'Bearer eyJhbGc
 tv_genres_hash = JSON.parse(user_serialized)["genres"]
 
 puts "Cleaning database..."
-
+Review.destroy_all
 Videogenrejoin.destroy_all
 Video.destroy_all
 Studio.destroy_all
@@ -64,8 +64,16 @@ user_creator = User.new(
   creator: true
 )
 
+
+
 user_viewer.save
 user_creator.save
+
+user_creator.profile.attach(
+  io: File.open('app/assets/images/menace2society.jpg'), # TO DO: update file
+  filename: 'm2c.jpg',
+  content_type: 'image/jpg'
+)
 
 puts "Creating studios..."
 
@@ -96,16 +104,19 @@ puts "Creating feature video..."
 #   studio: le_wagon
 # )
 # feature_video.thumbnail.attach(
+
+
 feature_video = Video.create(
   user: sam,
   views: 0,
   title: "Hey Folks, it's ShowTime!",
   language: 'English',
   video_type: 'Film',
-  category: 'Documentary',
   description: "Come along the journey with us to build the next revolutuonary app.",
   studio: le_wagon
 )
+
+
 # feature_video.thumbnail.attach( # image too large
 #   io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
 #   filename: '10-12.jpg',
@@ -238,7 +249,6 @@ Video.all.each do |video|
   puts "Title: #{video.title}"
   puts "Language: #{video.language}"
   puts "Video Type: #{video.video_type}"
-  puts "Category: #{video.category}"
   puts "Description: #{video.description}"
   puts "Studio ID: #{video.studio_id}"
   puts "--------------------------------"
@@ -263,4 +273,3 @@ Review.create!(
   user: User.second,
   video: Video.last
 )
-
