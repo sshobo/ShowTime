@@ -1,16 +1,24 @@
 <div id="<%= dom_id video %>">
-<div class="col">
-      <%= link_to video_path(video), class: "text-decoration-none" do %>
-        <div class="video-card">
-          <% if video.thumbnail.attached? %>
+  <div class="col">
+    <%= link_to video_path(video), class: "text-decoration-none" do %>
+      <div class="video-card">
+        <% if video.thumbnail.attached? %>
           <%= cl_image_tag video.thumbnail.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
-          <% else %>
+        <% else %>
           <img src="/app/assets/images/Blvck.jpg" alt="placeholder thumbnail" class="video-thumbnail">
-          <% end %>
-          <div class="title-container">
-            <h2 class="video-title"><%= video.title %> </h2>
-          </div>
+        <% end %>
+        <div class="title-container">
+          <h2 class="video-title"><%= video.title %></h2>
         </div>
-      <% end %>
-    </div>
+        <div class="action-buttons d-flex justify-content-between">
+          <div>
+            <%= image_tag "play.png", class:"playbutton" %>
+            <%= image_tag "plus.png", class:"playbutton" %>
+            <%= image_tag "like.png", class:"playbutton" %>
+          </div>
+          <%= image_tag "add.png", class:"playbutton" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

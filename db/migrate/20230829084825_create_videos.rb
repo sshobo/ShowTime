@@ -6,7 +6,6 @@ class CreateVideos < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :language
       t.string :type
-      t.string :category
       t.text :description
 
       t.timestamps
