@@ -42,6 +42,7 @@
   flex-wrap: wrap;
   margin: -10px; /* Adjust as needed */
   justify-content: space-between;
+  margin: 27px;
 }
 
 .col {
@@ -91,11 +92,12 @@
 
 .video-title {
   background: rgba(0, 0, 0, 0.4);
-  color: red;
+  color: white;
   width: 100%;
   margin: 0;
   padding-bottom: 5px;
   padding-right: 5px;
+  font-size: 1.2rem;
   // visibility: hidden;
   // opacity: 0;
   transition: opacity .3s, visibility .3s;
@@ -160,4 +162,22 @@
   .video-thumbnail {
     border-radius: 5px 5px 0 0;
   }
+}
+
+@keyframes glowing {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+  }
+}
+
+/* Apply the animation to the h1 element */
+h1 {
+  color: red; /* Set the text color to red */
+  animation: glowing 1.5s infinite; /* Apply the glowing animation */
 }
