@@ -17,6 +17,7 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
+    @cast = User.all
   end
 
   # GET /videos/new
