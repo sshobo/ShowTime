@@ -4,28 +4,28 @@
       <%= cl_video_tag @feature_video.videofile.key, autoplay: :autoplay, loop: :loop %>
     <% end %>
     <div class="banner-text">
-      <h1>Movie title</h1>
-      <p>Movie description</p>
-      <p>Trending Now</p>
+      <h1><%= @feature_video.title %></h1>
+      <p><%= @feature_video.description %></p>
+      <a class="btn btn-flat" href="#">Play</a>
     </div>
   </div>
 </div>
 <div class="container">
-  <div><h1>Continue watching for Cecil</h1></div>
+  <div class=home-page-heading><h1>Popular on ShowTime</h1></div>
   <div class="thumbnails">
     <% @top_movies.each do |video| %>
       <%= render 'videos/video', video: video %>
       <% end %>
   </div>
 
-  <div><h1>Popular on ShowTime</h1></div>
+  <div class=home-page-heading><h1>Trending TV Shows</h1></div>
   <div class="thumbnails">
     <% @top_tv.each do |video| %>
       <%= render 'videos/video', video: video %>
       <% end %>
   </div>
 
-  <div><h1>Trending now</h1></div>
+  <div class=home-page-heading><h1>Trending Movies</h1></div>
   <div class="thumbnails">
     <% @trending_movies.each do |video| %>
       <%= render 'videos/video', video: video %>

@@ -30,6 +30,7 @@ tv_genres_api_url = URI("https://api.themoviedb.org/3/genre/tv/list?language=en"
 user_serialized = URI.open(tv_genres_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
 tv_genres_hash = JSON.parse(user_serialized)["genres"]
 
+Review.destroy_all
 puts "Cleaning database..."
 Review.destroy_all
 Videogenrejoin.destroy_all
@@ -109,29 +110,21 @@ puts "Creating feature video..."
 feature_video = Video.create(
   user: sam,
   views: 0,
-  title: "Hey Folks, it's ShowTime!",
+  title: "The Office US",
   language: 'English',
   video_type: 'Film',
-  description: "Come along the journey with us to build the next revolutuonary app.",
+  description: "A motley group of office workers go through hilarious misadventures at the Scranton, Pennsylvania, branch of the Dunder Mifflin Paper Company.",
   studio: le_wagon
 )
 
-
-# feature_video.thumbnail.attach( # image too large
-#   io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
-#   filename: '10-12.jpg',
-#   content_type: 'image/jpg'
-# )
-
-# feature_video.videofile.attach(
-#   io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
-#   filename: '3 second video.mp4',
-#   content_type: 'video/mp4'
-# )
-
+feature_video.thumbnail.attach(
+  io: File.open('app/assets/images/the_office_us thumbnail.jpeg'), # TO DO: update file
+  filename: 'the_office_us thumbnail.jpeg',
+  content_type: 'image/jpeg'
+)
 feature_video.videofile.attach(
-  io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
-  filename: '3 second video.mp4',
+  io: File.open('app/assets/images/the_office_us.mp4'), # TO DO: update file
+  filename: 'the_office_us.mp4',
   content_type: 'video/mp4'
 )
 
