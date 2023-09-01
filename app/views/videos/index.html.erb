@@ -1,4 +1,5 @@
 <p style="color: green"><%= notice %></p>
+
 <div data-controller="search-videos">
   <%= form_with url: videos_path, method: :get, html: {class: "mb-4", data: {search_videos_target: "form"}} do |f| %>
           <%= f.text_field :query,
