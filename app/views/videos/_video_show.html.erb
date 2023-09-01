@@ -4,82 +4,85 @@
 <% end %>
 </div>
 
-<div class="producer-user-container">
-  <h1 style="font-family: sans-serif; ">Add Video/Title</h1>
-  <div class="producer-user">
-    <div class="d-flex align-items-center">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-      <h2 class="ms-2">Producer username</h2>
-    </div>
+<div class="container">
+  <div class="producer-user-container">
+    <h1 style="font-family: sans-serif; ">Add Video/Title</h1>
+    <div class="producer-user">
+      <div class="d-flex align-items-center">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large", style: "margin: 10px;" %>
+        <h2 class="ms-2">Producer username</h2>
+      </div>
 
-    <div class="producer-descript-content">
-      <p style="font-family:  Arial;">Description Content</p>
-    </div>
-</div>
+      <div class="producer-descript-content">
+        <p style="font-family:  Arial;">Description Content</p>
+      </div>
+  </div>
 
-<div class="d-flex justify-content-between">
-  <div class="Comment">
-    <h1 style="font-family: sans-serif; color: red;">Add a Comment</h1>
-    <%= link_to "Comments", new_video_review_path(video), class: "custom-link" %>
-    <div class="User-Comments">
+  <div class="d-flex justify-content-between comment-container">
+    <div class="Comment">
+      <h1 style="font-family: sans-serif; color: red;">Add a Review</h1>
+      <%= link_to "Review", new_video_review_path(video), class: "custom-link" %>
+      <div class="User-Comments">
 
-      <% video.reviews.each do |review| %>
-        <div class="User-Comment">
-          <div class="d-flex align-items-center justify-content-between w-100">
+        <% video.reviews.each do |review| %>
+          <div class="User-Comment">
+            <div class="d-flex align-items-center justify-content-between w-100">
+              <div class="d-flex align-items-center">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+                <h2 class="ms-2"><%= review.user.first_name %></h2>
+              </div>
             <div class="d-flex align-items-center">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-              <h2 class="ms-2"><%= review.user.first_name %></h2>
+              <% review.rating.to_i.times do %>
+                <span class="fa fa-star checked"></span>
+              <% end %>
             </div>
-          <div class="d-flex align-items-center">
-            <% review.rating.to_i.times do %>
-              <span class="fa fa-star checked"></span>
-            <% end %>
+            </div>
+            <p><%= review.content %></p>
           </div>
-          </div>
-          <p><%= review.content %></p>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
     </div>
 
+
+    <div class="Comment">
+      <h1 style="font-family: sans-serif; color: red;">Production Crew</h1>
+        <div class="User-Comment">
+        <div class="d-flex align-items-center">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+            <h2 class="ms-2">Actors/Directors/Editors</h2>
+          </div>
+          <p>Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards,</p>
+        </div>
+        <div class="User-Comment">
+        <div class="d-flex align-items-center">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+            <h2 class="ms-2">Actors/Directors/Editors</h2>
+          </div>
+          <p>Greta Gerwig is one of the most successful actors turned directors in recent years. In 2006 she made her acting debut in the comedy-drama.</p>
+        </div>
+        <div class="User-Comment">
+        <div class="d-flex align-items-center">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+            <h2 class="ms-2">Actors/Directors/Editors</h2>
+          </div>
+          <p>Washington didn't entirely strike gold with his first efforts as director. Antwone Fisher and The Great Debaters are not bad movies</p>
+        </div>
+        <div class="User-Comment">
+        <div class="d-flex align-items-center">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+            <h2 class="ms-2">Actors/Directors/Editors</h2>
+          </div>
+          <p>Greta Gerwig is one of the most successful actors turned directors in recent years. In 2006 she made her acting debut in the comedy-drama.</p>
+        </div>
+        <div class="User-Comment">
+        <div class="d-flex align-items-center">
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+            <h2 class="ms-2">Actors/Directors/Editors</h2>
+          </div>
+          <p>Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards,</p>
+        </div>
+    </div>
   </div>
 
-
-  <div class="Comment">
-    <h1 style="font-family: sans-serif; color: red;">Production Crew</h1>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">Actors/Directors/Editors</h2>
-        </div>
-        <p>Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards,</p>
-      </div>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">Actors/Directors/Editors</h2>
-        </div>
-        <p>Greta Gerwig is one of the most successful actors turned directors in recent years. In 2006 she made her acting debut in the comedy-drama.</p>
-      </div>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">Actors/Directors/Editors</h2>
-        </div>
-        <p>Washington didn't entirely strike gold with his first efforts as director. Antwone Fisher and The Great Debaters are not bad movies</p>
-      </div>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">Actors/Directors/Editors</h2>
-        </div>
-        <p>Greta Gerwig is one of the most successful actors turned directors in recent years. In 2006 she made her acting debut in the comedy-drama.</p>
-      </div>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">Actors/Directors/Editors</h2>
-        </div>
-        <p>Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards,</p>
-      </div>
-  </div>
 </div>

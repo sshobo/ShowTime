@@ -1,0 +1,25 @@
+.button-35 {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.button-35:hover {
+  background-color: black;
+}
+.info-text {
+  color: white;
+  text-shadow: black 1.5px 1.5px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
