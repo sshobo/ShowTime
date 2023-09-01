@@ -27,6 +27,7 @@ trending_tv_hash = JSON.parse(user_serialized)["results"]
 
 puts "Cleaning database..."
 
+Review.destroy_all
 Video.destroy_all
 Studio.destroy_all
 User.destroy_all
@@ -82,27 +83,21 @@ puts "Creating videos..."
 feature_video = Video.create(
   user: sam,
   views: 0,
-  title: "Hey Folks, it's ShowTime!",
+  title: "The Office US",
   language: 'English',
   video_type: 'Film',
-  category: 'Documentary',
-  description: "Come along the journey with us to build the next revolutuonary app.",
+  category: 'Comedy',
+  description: "A motley group of office workers go through hilarious misadventures at the Scranton, Pennsylvania, branch of the Dunder Mifflin Paper Company.",
   studio: le_wagon
 )
-# feature_video.thumbnail.attach( # image too large
-#   io: File.open('app/assets/images/10-12.jpg'), # TO DO: update file
-#   filename: '10-12.jpg',
-#   content_type: 'image/jpg'
-# )
-
-# feature_video.videofile.attach(
-#   io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
-#   filename: '3 second video.mp4',
-#   content_type: 'video/mp4'
-# )
+feature_video.thumbnail.attach(
+  io: File.open('app/assets/images/the_office_us thumbnail.jpeg'), # TO DO: update file
+  filename: 'the_office_us thumbnail.jpeg',
+  content_type: 'image/jpeg'
+)
 feature_video.videofile.attach(
-  io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
-  filename: '3 second video.mp4',
+  io: File.open('app/assets/images/the_office_us.mp4'), # TO DO: update file
+  filename: 'the_office_us.mp4',
   content_type: 'video/mp4'
 )
 
