@@ -84,6 +84,18 @@ end
 puts "Creating feature video..."
 
 # create feature video
+
+# feature_video = Video.create(
+#   user: sam,
+#   views: 0,
+#   title: "Hey Folks, it's ShowTime!",
+#   language: 'English',
+#   video_type: 'Film',
+#   category: 'Documentary',
+#   description: "Come along the journey with us to build the next revolutuonary app.",
+#   studio: le_wagon
+# )
+# feature_video.thumbnail.attach(
 feature_video = Video.create(
   user: sam,
   views: 0,
@@ -100,11 +112,18 @@ feature_video = Video.create(
 #   content_type: 'image/jpg'
 # )
 
+# feature_video.videofile.attach(
+#   io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
+#   filename: '3 second video.mp4',
+#   content_type: 'video/mp4'
+# )
+
 feature_video.videofile.attach(
   io: File.open('app/assets/images/3 second video.mp4'), # TO DO: update file
   filename: '3 second video.mp4',
   content_type: 'video/mp4'
 )
+
 
 # create dummy videos
 def create_video(movie, user_creator, genre, video_type)
@@ -230,3 +249,18 @@ Videogenrejoin.all.each do |videogenrejoin|
   puts "Genre id: #{videogenrejoin.genre_id}"
   puts "--------------------------------"
 end
+
+Review.create!(
+  rating: 4,
+  content: "One can only imagine the chilling impact on oceanic circulation patterns as temperature and pressure interplay during the ascent from the depths of the Atlantic abyss to the coastal waters.",
+  user: User.first,
+  video: Video.last
+)
+
+Review.create!(
+  rating: 2,
+  content: "Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards",
+  user: User.second,
+  video: Video.last
+)
+

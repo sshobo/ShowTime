@@ -3,6 +3,7 @@ class Video < ApplicationRecord
   belongs_to :studio, optional: true
   has_many :videogenrejoins
   has_many :genres, through: :videogenrejoins
+  has_many :reviews
   has_one_attached :thumbnail
   has_one_attached :videofile
 
