@@ -20,78 +20,27 @@
 <div class="d-flex justify-content-between">
   <div class="Comment">
     <h1 style="font-family: sans-serif; color: red;">Add a Comment</h1>
+    <%= link_to "Comments", new_video_review_path(video), class: "custom-link" %>
     <div class="User-Comments">
-      <div class="User-Comment">
-        <div class="d-flex align-items-center justify-content-between w-100">
+
+      <% video.reviews.each do |review| %>
+        <div class="User-Comment">
+          <div class="d-flex align-items-center justify-content-between w-100">
+            <div class="d-flex align-items-center">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+              <h2 class="ms-2"><%= review.user.first_name %></h2>
+            </div>
           <div class="d-flex align-items-center">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-            <h2 class="ms-2">User1</h2>
+            <% review.rating.to_i.times do %>
+              <span class="fa fa-star checked"></span>
+            <% end %>
           </div>
-         <div class="d-flex align-items-center">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-        </div>
-        </div>
-        <p>One can only imagine the chilling impact on oceanic circulation patterns as temperature and pressure interplay during the ascent from the depths of the Atlantic abyss to the coastal waters.</p>
-      </div>
-      <div class="User-Comment">
-       <div class="d-flex align-items-center justify-content-between w-100">
-        <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">User2</h2>
-        </div>
-        <div class="d-flex align-items-center">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-        </div>
-         </div>
-        <p>This movie is incredibly captivating. The concept of the megalodon, the largest shark in existence, leaves me utterly speechless. Its sheer enormity defies explanation.</p>
-      </div>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center justify-content-between w-100">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">User3</h2>
-        </div>
-       <div class="d-flex align-items-center">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-        </div>
           </div>
-        <p>While the film might not align with traditional expectations, a part of me senses an intentional self-awareness in its absurdity. Curiously honest, I must admit.</p>
-      </div>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center justify-content-between w-100">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">User4</h2>
+          <p><%= review.content %></p>
         </div>
-        <div class="d-flex align-items-center">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-        </div>
-          </div>
-        <p>This movie is incredibly captivating. The concept of the megalodon, the largest shark in existence, leaves me utterly speechless. Its sheer enormity defies explanation.</p>
-      </div>
-      <div class="User-Comment">
-      <div class="d-flex align-items-center justify-content-between w-100">
-      <div class="d-flex align-items-center">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-          <h2 class="ms-2">User5</h2>
-        </div>
-        <div class="d-flex align-items-center">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-        </div>
-          </div>
-        <p>This movie is incredibly captivating. The concept of the megalodon, the largest shark in existence, leaves me utterly speechless. Its sheer enormity defies explanation.</p>
-      </div>
+      <% end %>
     </div>
+
   </div>
 
 

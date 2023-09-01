@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :videos
   devise_for :users
   root to: "pages#home"
 
@@ -7,5 +6,8 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'pages#dashboard'
 
+  resources :videos do
+    resources :reviews, only: [:new, :create]
+  end
   resources :users, only: [:index, :show]
 end
