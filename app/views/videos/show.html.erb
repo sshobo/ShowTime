@@ -1,9 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render 'video_show', video: @video %>
-
+<% if @video.user == current_user %>
 <div class="d-flex">
   <%= link_to "Edit this video", edit_video_path(@video), class: "btn-xs button-35 Edit-this-video", style: "margin-right: 15px;" %>
   <%= link_to "Back to videos", videos_path, class: "btn-xs button-35 Back-to-videos", style: "margin-right: 15px;" %>
   <%= button_to "Delete video", @video, method: :delete, class: "btn-xs button-35 Delete-video" %>
 </div>
+<% end %>
