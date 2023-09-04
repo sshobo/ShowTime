@@ -107,6 +107,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_132959) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videocategories", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "categorie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["categorie_id"], name: "index_videocategories_on_categorie_id"
+    t.index ["video_id"], name: "index_videocategories_on_video_id"
+  end
+
   create_table "videogenrejoins", force: :cascade do |t|
     t.bigint "video_id", null: false
     t.bigint "genre_id", null: false
@@ -139,6 +148,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_132959) do
   add_foreign_key "crews", "users"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "videos"
+  add_foreign_key "videocategories", "categories", column: "categorie_id"
+  add_foreign_key "videocategories", "videos"
   add_foreign_key "videogenrejoins", "genres"
   add_foreign_key "videogenrejoins", "videos"
   add_foreign_key "videos", "studios"
