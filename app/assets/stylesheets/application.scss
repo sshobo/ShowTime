@@ -11,3 +11,19 @@
 @import "components/index";
 @import "pages/index";
   // margin: 0% 20px;
+
+  body.dark-theme {
+    color: #eee;
+    background: #121212;
+
+    .producer-user{
+      background-color: gray;
+    }
+
+    .producer-descript-content{
+      color:black;
+    }
+    .Comment {
+      background-color: gray;
+    }
+  }

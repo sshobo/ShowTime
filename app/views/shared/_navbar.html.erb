@@ -21,6 +21,7 @@
         </div>
      <% end %>
     </div>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
@@ -32,10 +33,15 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232" alt="Profile Picture" class="avatar">
               <% end %>
             </a>
+
+
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My Dashboard", dashboard_path,  class: "dropdown-item" %>
               <%= link_to "Content", videos_path,  class: "dropdown-item" %>
               <%= link_to "Settings", "Settings", class: "dropdown-item" %>
+              <button data-controller="theme-toggler" class="dropdown-item" data-action="click->theme-toggler#toggleTheme">Toggle Dark-Mode</button>
+
+              <div class="dropdown-divider"></div>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

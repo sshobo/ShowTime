@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :crews
   has_many :studios, through: :crews
   has_one_attached :profile
+
+  enum theme_preference: [ :light, :dark ]
 end
