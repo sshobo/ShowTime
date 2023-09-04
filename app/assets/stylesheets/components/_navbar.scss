@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: transparent;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 0 20px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -42,7 +42,7 @@
 
 /* Apply the animation to the h1 element */
 .navbar-item .nav-item .nav-link{
-  color: black;
+  color: #333;
   text-decoration: none;
   margin-right: 5px;
   padding: 0 10px;
@@ -53,7 +53,7 @@
 
 .navbar-item .nav-item .nav-link:hover{
   color: red;
-  // background-color: #f8f9fa;
+  background-color: #f8f9fa;
   font-weight: bold;
 
 }
