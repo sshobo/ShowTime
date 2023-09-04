@@ -116,6 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_192135) do
     t.string "title"
     t.string "language"
     t.string "video_type"
+    t.string "category"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
