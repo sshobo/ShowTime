@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    @index_target = params[:index_target]
     sam = User.find_by(last_name: "Shobo")
     @feature_video = Video.find_by(user: sam)
     @videos = Video.all
@@ -10,17 +9,9 @@ class PagesController < ApplicationController
     # @top_tv = jt.where(genres: {name: 'Thriller'})
     # @trending_movies = jt.where(genres: {name: 'Epic'})
     # @top_movies = jt.where(genres: {name: 'Epic'})
-    @top_tv = @videos.sample(5)
-    @trending_movies = @videos.sample(5)
-    @top_movies = @videos.sample(5)
-    if params[:query].present?
-      @videos = @videos.where("title ILIKE ?", "%#{params[:query]}%")
-    end
-
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: "videos/list", locals: {videos: @videos}, formats: [:html] }
-    end
+    @top_tv = @videos.sample(4)
+    @trending_movies = @videos.sample(4)
+    @top_movies = @videos.sample(4)
   end
 
   def dashboard
