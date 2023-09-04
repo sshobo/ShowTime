@@ -15,6 +15,10 @@
 .navbar-brand {
   text-decoration: none;
   color: $red-scarlet;
+
+  color: red; /* Set the text color to red */
+  animation: glowing 1.5s infinite; /* Apply the glowing animation */
+
   h1 {
     font-family: "Lobster";
   }
@@ -22,3 +26,17 @@
 .nav-item {
   margin: 0 20px;
 }
+
+@keyframes glowing {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+  }
+}
+
+/* Apply the animation to the h1 element */
