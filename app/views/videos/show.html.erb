@@ -4,17 +4,22 @@
 
 
 <div class="container">
+
   <div class="producer-user-container">
     <h1 style="font-family: sans-serif; "><%= @video.title %></h1>
-    <div class="producer-user">
+    <div class="producer-user p-2">
       <div class="d-flex align-items-center">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-        <h2 class="ms-2">Production</h2>
+        <% if @video.user.profile.attached? %>
+        <%= cl_image_tag @user.profile.key, class: 'avatar-large', style: "margin: 10px;"%>
+        <% else %>
+          <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232", class: "avatar-large", alt: "avatar-large", style: "margin: 10px;" %>
+        <% end %>
+        <h2 class="ms-2"><%= "#{@video.user.first_name} #{@video.user.last_name}" %></h2>
       </div>
-
       <div class="producer-descript-content">
-        <p style="font-family:  Arial;">Description Content</p>
+        <p style="font-family:  Arial;"><%= @video.description %></p>
       </div>
+     </div>
   </div>
 
   <div class="d-flex justify-content-between">
@@ -45,6 +50,7 @@
 
     <div class="Comment">
       <h1 style="font-family: sans-serif; color: red;">Production Crew</h1>
+      <%= "This video does not have any users in it." if @cast.length == 0 %>
       <% @cast.each do |user| %>
         <%= render 'cast', user: user %>
       <% end %>
