@@ -1,12 +1,10 @@
-<div class="video-card d-flex">
+<div class="studio-card d-flex align-items-center bg-light col-3">
   <% if studio.logo.attached? %>
-    <%= cl_image_tag studio.logo.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
+    <%= cl_image_tag studio.logo.key, class: "studio-logo", controls: true %>
   <% else %>
-    <img src="/app/assets/images/Blvck.jpg" alt="placeholder thumbnail" class="video-thumbnail">
+    <img src="https://www.citypng.com/public/uploads/preview/silver-gray-shield-sign-logo-png-image-11668959935vvgtwhgsiy.png" alt="placeholder studio" class="studio-logo">
   <% end %>
-  <div class="title-container">
-    <h2 class="video-title"><%= studio.name %></h2>
-  </div>
-  <div class="action-buttons d-flex justify-content-between">
+  <div class="name-container px-3">
+    <h2 class="studio-title"><%= studio.name %></h2>
   </div>
 </div>

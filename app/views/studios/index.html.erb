@@ -25,6 +25,8 @@
   </div>
 </div>
 
-<% @studios.each do |studio| %>
-  <%= render "studio", studio: studio %>
-<% end %>
+<div class="d-flex p-4 mr-3">
+  <% @studios.each do |studio| %>
+    <%= render "studio", studio: studio %>
+  <% end %>
+</div>
