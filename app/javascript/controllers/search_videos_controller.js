@@ -2,22 +2,30 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-videos"
 export default class extends Controller {
-  static targets = ["form", "input", "list", "home"]
+  static targets = ["input", "videos", "users", "home"]
 
   update() {
     const query = this.inputTarget.value;
-    const url = `${this.formTarget.action}?query=${query}`
-    fetch(url, { headers: { "Accept": "text/plain" } })
+    const videos_url = `videos?query=${query}`
+    const users_url = `users?query=${query}`
+    if (query.trim() !== '') {
+      this.homeTarget.style.display = 'none';
+      fetch(videos_url, { headers: { "Accept": "text/plain" } })
+        .then(response => response.text())
+        .then((data) => {
+            this.videosTarget.innerHTML = data
+          })
+      fetch(users_url, { headers: { "Accept": "text/plain" } })
       .then(response => response.text())
       .then((data) => {
-        console.log(this.homeTarget.innerHTML);
-        if (query.trim() !== '') {
-          this.listTarget.innerHTML = data
-          this.homeTarget.style.display = 'none';
-        }else{
-          this.listTarget.innerHTML = ''
-          this.homeTarget.style.display = '';
-        }
-      })
+          this.usersTarget.innerHTML = data
+        })
+      this.homeTarget.style.display = 'none';
+    }
+    else{
+      this.videosTarget.innerHTML = '';
+      this.usersTarget.innerHTML = '';
+      this.homeTarget.style.display = '';
+    }
   }
 }

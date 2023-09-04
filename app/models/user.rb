@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :casts
   has_many :videos, through: :casts
   has_one_attached :profile
+
+  validates :email, uniqueness: true
 end

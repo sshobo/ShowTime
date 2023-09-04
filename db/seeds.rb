@@ -5,6 +5,7 @@
 
 require 'json'
 require 'open-uri'
+require 'faker'
 
 top_rated_movies_api_url = URI("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1")
 user_serialized = URI.open(top_rated_movies_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
@@ -49,7 +50,7 @@ sam = User.create(
   creator: true
 )
 
-user_viewer = User.new(
+user_viewer = User.create(
   first_name: "Joan",
   last_name: "Alemany",
   email: "joanviewer@gmail.com",
@@ -57,18 +58,42 @@ user_viewer = User.new(
   creator: false
 )
 
-user_creator = User.new(
+user_creator = User.create(
   first_name: "Phillipe",
   last_name: "John-Jules",
   email: "phillipecreator@gmail.com",
   password: "123456",
   creator: true
 )
+10.times {
+  name = Faker::Name.name
+  name = name.split(" ")
+  first_name = name[0]
+  last_name = name[1]
+  email = "#{first_name}#{last_name}@gmail.com"
+  User.create(
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+    password: "123456",
+    creator: true
+  )
+ }
 
-
-
-user_viewer.save
-user_creator.save
+ 10.times {
+  name = Faker::Name.name
+  name = name.split(" ")
+  first_name = name[0]
+  last_name = name[1]
+  email = "#{first_name}#{last_name}@gmail.com"
+  User.create(
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+    password: "123456",
+    creator: false
+  )
+ }
 
 user_creator.profile.attach(
   io: File.open('app/assets/images/menace2society.jpg'), # TO DO: update file
@@ -233,6 +258,22 @@ trending_tv_hash.each do |tv|
   create_video(tv, user_creator, "Trending TV", "tv")
 end
 
+puts "Creating reviews..."
+
+Review.create!(
+  rating: 4,
+  content: "One can only imagine the chilling impact on oceanic circulation patterns as temperature and pressure interplay during the ascent from the depths of the Atlantic abyss to the coastal waters.",
+  user: User.first,
+  video: Video.last
+)
+
+Review.create!(
+  rating: 2,
+  content: "Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards",
+  user: User.second,
+  video: Video.last
+)
+
 puts "Displaying videos"
 
 Video.all.each do |video|
@@ -253,16 +294,11 @@ Videogenrejoin.all.each do |videogenrejoin|
   puts "--------------------------------"
 end
 
-Review.create!(
-  rating: 4,
-  content: "One can only imagine the chilling impact on oceanic circulation patterns as temperature and pressure interplay during the ascent from the depths of the Atlantic abyss to the coastal waters.",
-  user: User.first,
-  video: Video.last
-)
+puts "Displaying users"
 
-Review.create!(
-  rating: 2,
-  content: "Bradley Charles Cooper is an American actor and filmmaker. He is the recipient of various accolades, including a British Academy Film Award and two Grammy Awards",
-  user: User.second,
-  video: Video.last
-)
+User.all.each do |user|
+  puts "First name: #{user.first_name}"
+  puts "Last name: #{user.last_name}"
+  puts "Gmail: #{user.email}"
+  puts "--------------------------------"
+end

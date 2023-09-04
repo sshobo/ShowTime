@@ -6,17 +6,7 @@
 
     <div  class="input-group d-flex justify-content-end">
       <div>
-        <%= form_with url: videos_path, method: :get, html: { class: "form-outline", data: { search_videos_target: "form" } } do |f| %>
-        <%= f.text_field :query,
-                    class: "form-control",
-                    placeholder: "Movie, TV Show..",
-                    value: params[:query],
-                    data: {
-                      search_videos_target: "input",
-                      action: "keyup->search-videos#update"
-                    }
-                    %>
-        <% end %>
+        <input class="form-control" placeholder="Movie, TV Show.." value="" data-search-videos-target="input" data-action="keyup->search-videos#update" type="text" name="query" id="query" autocomplete="off">
       </div>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
