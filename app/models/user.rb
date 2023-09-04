@@ -11,9 +11,11 @@ class User < ApplicationRecord
   has_many :videos, through: :casts
   has_one_attached :profile
 
+
   accepts_nested_attributes_for :casts
 
   def full_name
     "#{first_name} #{last_name}"
   end
+
 end
