@@ -1,2 +1,22 @@
 <p style="color: green"><%= notice %></p>
-<%= render "list", videos: @videos %>
+
+
+  <div data-controller="search-videos">
+<div class="searchbar">
+    <%= form_with url: videos_path, method: :get, html: {class: "mb-4", data: {search_videos_target: "form"}} do |f| %>
+            <%= f.text_field :query,
+                            class: "form-control",
+                            placeholder: "Movie, TV Show..",
+                            value: params[:query],
+                            data: {
+                              search_videos_target: "input",
+                              action: "keyup->search-videos#update",
+                              },
+                              style: "width: 500px;"
+
+                            %>
+
+    <% end %>
+
+    <%= render "list", videos: @videos %>
+  </div>
