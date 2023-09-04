@@ -23,8 +23,9 @@
     font-family: "Lobster";
   }
 }
-.nav-item {
-  margin: 0 20px;
+.nav-link-border {
+  // margin: 0 20px;
+  border-right: 1px solid black;
 }
 
 @keyframes glowing {
@@ -40,3 +41,20 @@
 }
 
 /* Apply the animation to the h1 element */
+.navbar-item .nav-item .nav-link{
+  color: #333;
+  text-decoration: none;
+  margin-right: 5px;
+  padding: 0 10px;
+  font-weight: 100;
+  transition: color 0.3s;
+}
+
+
+.navbar-item .nav-item .nav-link:hover{
+  color: red;
+  background-color: #f8f9fa;
+  font-weight: bold;
+
+}
+

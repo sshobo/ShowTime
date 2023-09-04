@@ -14,13 +14,22 @@
     text-shadow: 0.1px 0.1px 4px black;
   }
 
+  a {
+    font-weight: 300;
+    font-size: 22px;
+    i {
+      padding-right: 5px;
+    }
+  }
+
   .video-container {
-    height: 525px; //calc(100vh - 82px); // depends on height of navabar
+    height: 625px; //calc(100vh - 82px); // depends on height of navabar
     // @media only screen and (min-width: 1300px) {
     //   height: 600px;
     // }
     display: flex;
     align-items: center;
+    margin-bottom: 7px;
   }
 
   video {
@@ -35,7 +44,7 @@
     z-index: 1;
     position: relative;
     text-align: left;
-    margin-left: 77px;
+    margin-left: 50px;
     width: 450px;
   }
 }
@@ -55,6 +64,7 @@
 
 .home-page-heading h1 {
   padding: 5px 0px 0px;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 700;
+  margin-left: 45px;
 }
