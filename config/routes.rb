@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'pages#dashboard'
 
+  patch '/toggle-theme', to: 'users#toggle_theme'
+
   resources :videos do
     resources :reviews, only: [:new, :create]
   end
