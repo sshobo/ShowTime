@@ -43,10 +43,6 @@ export default class extends Controller {
           //   },
           // },
           onChange:function() {
-            console.log("changed");
-            update();
-          },
-          onItemRemove:function() {
             update();
           }
         }
