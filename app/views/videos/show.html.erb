@@ -45,7 +45,7 @@
 
   <div class="Comment">
     <h1 style="font-family: sans-serif; color: red;">Production Crew</h1>
-    <% @cast.each do |user| %>
+    <% @cast.each_with_index do |user, index| %>
       <%= render 'cast', user: user %>
     <% end %>
   </div>

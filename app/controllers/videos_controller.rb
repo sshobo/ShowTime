@@ -17,10 +17,10 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
-    @cast = User.all
+    @cast = @video.users
     @roles = []
     @video.users.each_with_index do |user, index|
-      @roles << [["#{user.first_name} #{user.last_name}"],[@video.casts[index][:role]]]
+      @roles << [@video.casts[index][:role]]
     end
 
   end
@@ -58,7 +58,7 @@ class VideosController < ApplicationController
       end
     end
     set_cast
-
+    @roles = [@video.casts]
   end
 
   # PATCH/PUT /videos/1 or /videos/1.json
