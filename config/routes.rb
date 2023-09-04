@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'studios/new'
+  get 'studios/index'
+  get 'studios/show'
   devise_for :users
   root to: "pages#home"
 
@@ -10,4 +13,5 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
   resources :users, only: [:index, :show]
+  resources :studios, only: [:index, :show]
 end

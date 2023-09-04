@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     sam = User.find_by(last_name: "Shobo")
     @feature_video = Video.find_by(user: sam)
     @videos = Video.all
-    jt = Video.joins(videogenrejoins: :genre)
+    # jt = Video.joins(videogenrejoins: :genre)
     # @top_tv = jt.where(genres: {name: 'Thriller'})
     # @trending_movies = jt.where(genres: {name: 'Epic'})
     # @top_movies = jt.where(genres: {name: 'Epic'})
