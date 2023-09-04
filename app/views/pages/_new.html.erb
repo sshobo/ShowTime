@@ -16,7 +16,7 @@
       <div  data-action="click->cast-info#update">
       <%= f.input :users, collection: User.all,label_method: :first_name, label: 'Select Cast Members', input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, include_hidden: false %>
       </div>
-      <div data-cast-info-target="form">
+      <div class="role-inputs" data-cast-info-target="form">
       </div>
     </div>
 

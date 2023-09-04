@@ -18,6 +18,11 @@ class VideosController < ApplicationController
   # GET /videos/1 or /videos/1.json
   def show
     @cast = User.all
+    @roles = []
+    @video.users.each_with_index do |user, index|
+      @roles << [["#{user.first_name} #{user.last_name}"],[@video.casts[index][:role]]]
+    end
+
   end
 
   # GET /videos/new
@@ -52,18 +57,7 @@ class VideosController < ApplicationController
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
-    @role_array = []
-    params[:video].each do |key, value|
-      # Check if the key matches the pattern "castX" where X is a number
-      if key =~ /casts(\d+)/
-        @role_array << value
-      end
-    end
-    @video.users.each_with_index do |user, index|
-      Cast.find_by(user_id: user.id, video_id: @video.id).role = @role_array[index]
-      Cast.create(user_id: user.id, video_id: @video.id, role: @role_array[index])
-      raise
-    end
+    set_cast
 
   end
 
@@ -73,18 +67,7 @@ class VideosController < ApplicationController
 
     @video.users = params[:video][:users].reject(&:empty?).map(&:to_i).map { |id| User.find { |user| user[:id] == id } }
     @video.genres = params[:video][:genres].reject(&:empty?).map(&:to_i).map { |id| Genre.find { |genre| genre[:id] == id } }
-    @role_array = []
-    params[:video].each do |key, value|
-      # Check if the key matches the pattern "castX" where X is a number
-      if key =~ /casts(\d+)/
-        @role_array << value
-      end
-    end
-    @video.users.each_with_index do |user, index|
-      current_cast = Cast.find_by(user_id: user.id, video_id: @video.id)
-      current_cast.role = @role_array[index]
-
-    end
+    set_cast
     respond_to do |format|
       if @video.update(video_params)
         format.html { redirect_to video_url(@video), notice: "Video was successfully updated." }
@@ -113,11 +96,20 @@ class VideosController < ApplicationController
     end
 
     def set_cast
-
+      @role_array = []
+      params[:video].each do |key, value|
+        # Check if the key matches the pattern "castX" where X is a number
+        if key =~ /casts(\d+)/
+          @role_array << value
+        end
+      end
+      @video.users.each_with_index do |user, index|
+        Cast.find_by(user_id: user.id, video_id: @video.id).update_column(:role, @role_array[index])
+      end
     end
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:title, :views, :genres, :type, :description, :language, :studio_id, :thumbnail, :videofile, :users, :casts)
+      params.require(:video).permit(:title, :views, :genres, :type, :description, :language, :studio_id, :thumbnail, :videofile, :users)
     end
 end
