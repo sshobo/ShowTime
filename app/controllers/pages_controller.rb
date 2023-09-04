@@ -9,9 +9,9 @@ class PagesController < ApplicationController
     # @top_tv = jt.where(genres: {name: 'Thriller'})
     # @trending_movies = jt.where(genres: {name: 'Epic'})
     # @top_movies = jt.where(genres: {name: 'Epic'})
-    @top_tv = @videos.sample(4)
-    @trending_movies = @videos.sample(4)
-    @top_movies = @videos.sample(4)
+    @top_tv = @videos.sample(5)
+    @trending_movies = @videos.sample(5)
+    @top_movies = @videos.sample(5)
   end
 
   def dashboard

@@ -8,12 +8,15 @@
     <div class="banner-text">
       <h1><%= @feature_video.title %></h1>
       <p><%= @feature_video.description %></p>
-      <a class="btn btn-flat" href="#">Play</a>
+      <a class="btn btn-flat" href="<%= video_path(@feature_video) %>">
+        <i class="fa-solid fa-play" style="color: #ffffff;"></i>
+        Play
+      </a>
     </div>
     <% end %>
   </div>
 </div>
-<div class="container">
+<%# <div class="container"> %>
   <div class=home-page-heading><h1>Popular on ShowTime</h1></div>
   <div class="thumbnails">
     <% @top_movies.each do |video| %>
@@ -34,4 +37,4 @@
       <%= render 'videos/video', video: video %>
       <% end %>
   </div>
-</div>
+<%# </div> %>
