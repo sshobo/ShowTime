@@ -10,8 +10,10 @@
     <%= f.input :title %>
     <%= f.input :language, collection: Video::LANGUAGES %>
     <%= f.input :video_type %>
-    <%= f.input :category, collection: Video::CATEGORIES %>
-    <%= f.input :studio_id, collection: @studios %>
+    <%= f.input :genres, collection: Genre.all, label: 'Genres', input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, include_hidden: false %>
+    <%= f.input :users, collection: User.all,label_method: :first_name, label: 'Select Cast Members', input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, include_hidden: false %>
+    <%= f.input :studio_id, label: 'Select Studio (if appropriate)', collection: @studios %>
+
     <%= f.input :thumbnail, as: :file %>
     <%= f.input :videofile, as: :file %>
     <%= f.submit class: "btn btn-primary" %>
