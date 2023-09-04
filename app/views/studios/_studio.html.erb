@@ -1,0 +1,12 @@
+<div class="video-card d-flex">
+  <% if studio.logo.attached? %>
+    <%= cl_image_tag studio.logo.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
+  <% else %>
+    <img src="/app/assets/images/Blvck.jpg" alt="placeholder thumbnail" class="video-thumbnail">
+  <% end %>
+  <div class="title-container">
+    <h2 class="video-title"><%= studio.name %></h2>
+  </div>
+  <div class="action-buttons d-flex justify-content-between">
+  </div>
+</div>
