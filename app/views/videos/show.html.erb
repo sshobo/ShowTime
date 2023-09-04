@@ -3,58 +3,59 @@
 <%= render 'video_show', video: @video %>
 
 
+<div class="container">
+  <div class="producer-user-container">
+    <h1 style="font-family: sans-serif; "><%= @video.title %></h1>
+    <div class="producer-user">
+      <div class="d-flex align-items-center">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+        <h2 class="ms-2">Production</h2>
+      </div>
 
-<div class="producer-user-container">
-  <h1 style="font-family: sans-serif; "><%= @video.title %></h1>
-  <div class="producer-user">
-    <div class="d-flex align-items-center">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-      <h2 class="ms-2">Production</h2>
-    </div>
+      <div class="producer-descript-content">
+        <p style="font-family:  Arial;">Description Content</p>
+      </div>
+  </div>
 
-    <div class="producer-descript-content">
-      <p style="font-family:  Arial;">Description Content</p>
-    </div>
-</div>
+  <div class="d-flex justify-content-between">
+    <div class="Comment">
+      <h1 style="font-family: sans-serif; color: red;">All Reviews</h1>
+      <%= link_to "New Review", new_video_review_path(@video), class: "custom-link" %>
+      <div class="User-Comments">
 
-<div class="d-flex justify-content-between">
-  <div class="Comment">
-    <h1 style="font-family: sans-serif; color: red;">All Reviews</h1>
-    <%= link_to "New Review", new_video_review_path(@video), class: "custom-link" %>
-    <div class="User-Comments">
-
-      <% @video.reviews.each do |review| %>
-        <div class="User-Comment">
-          <div class="d-flex align-items-center justify-content-between w-100">
+        <% @video.reviews.each do |review| %>
+          <div class="User-Comment">
+            <div class="d-flex align-items-center justify-content-between w-100">
+              <div class="d-flex align-items-center">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
+                <h2 class="ms-2"><%= review.user.first_name %></h2>
+              </div>
             <div class="d-flex align-items-center">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %>
-              <h2 class="ms-2"><%= review.user.first_name %></h2>
+              <% review.rating.to_i.times do %>
+                <span class="fa fa-star checked"></span>
+              <% end %>
             </div>
-          <div class="d-flex align-items-center">
-            <% review.rating.to_i.times do %>
-              <span class="fa fa-star checked"></span>
-            <% end %>
+            </div>
+            <p><%= review.content %></p>
           </div>
-          </div>
-          <p><%= review.content %></p>
-        </div>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="Comment">
+      <h1 style="font-family: sans-serif; color: red;">Production Crew</h1>
+      <% @cast.each do |user| %>
+        <%= render 'cast', user: user %>
       <% end %>
     </div>
-
   </div>
 
-  <div class="Comment">
-    <h1 style="font-family: sans-serif; color: red;">Production Crew</h1>
-    <% @cast.each_with_index do |user, index| %>
-      <%= render 'cast', user: user %>
-    <% end %>
+  <% if @video.user == current_user %>
+  <div class="d-flex">
+    <%= link_to "Edit this video", edit_video_path(@video), class: "btn-xs button-35 Edit-this-video", style: "margin-right: 15px;" %>
+    <%= link_to "Back to videos", videos_path, class: "btn-xs button-35 Back-to-videos", style: "margin-right: 15px;" %>
+    <%= button_to "Delete video", @video, method: :delete, class: "btn-xs button-35 Delete-video" %>
   </div>
+  <% end %>
 </div>
-
-<% if @video.user == current_user %>
-<div class="d-flex">
-  <%= link_to "Edit this video", edit_video_path(@video), class: "btn-xs button-35 Edit-this-video", style: "margin-right: 15px;" %>
-  <%= link_to "Back to videos", videos_path, class: "btn-xs button-35 Back-to-videos", style: "margin-right: 15px;" %>
-  <%= button_to "Delete video", @video, method: :delete, class: "btn-xs button-35 Delete-video" %>
-</div>
-<% end %>
