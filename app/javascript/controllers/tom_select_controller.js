@@ -17,10 +17,9 @@ export default class extends Controller {
   }
 
   select_users() {
+    console.log(this.element.querySelectorAll('option'));
     new TomSelect(
-      this.element,
-
-        {
+      this.element, {
           plugins: {
             remove_button:{
               title:'Remove',
@@ -33,9 +32,24 @@ export default class extends Controller {
 
           valueField: 'id',
           placeholder: "Select",
-          maxOptions: 5
-      }
+          maxOptions: 5,
+          highlight: true,
+          // render: {
+          //   option: function(data, escape) {
+          //     return '<div>' +
 
+          //         // '<span class="title">' + data.value + '</span>' +
+          //       '</div>';
+          //   },
+          // },
+          onChange:function() {
+            console.log("changed");
+            update();
+          },
+          onItemRemove:function() {
+            update();
+          }
+        }
       );
   }
 
@@ -59,5 +73,20 @@ export default class extends Controller {
       }
 
       );
+  }
+
+  update() {
+
+    const members = this.element.querySelectorAll(".item").length
+    const membersData = this.element.querySelectorAll(".item")
+
+    console.log(members);
+    this.formTarget.innerHTML= '';
+    let roleHTML = '';
+    for (let i=1;i<=members;i++) {
+      let input = `<div class="mb-3 string optional video_casts"><label class="form-label string optional" for="video_casts">Role of ${membersData[i-1].innerText.slice(0, -2)}</label><input class="form-control string optional" type="text" name="video[casts${i}]" id="video_casts"></div>`;
+      roleHTML += input;
+    }
+    this.formTarget.innerHTML = roleHTML
   }
 }

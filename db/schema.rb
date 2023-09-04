@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_201540) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_02_192135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_201540) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "contribution", default: ""
     t.index ["user_id"], name: "index_casts_on_user_id"
     t.index ["video_id"], name: "index_casts_on_video_id"
   end
