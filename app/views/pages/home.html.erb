@@ -7,12 +7,10 @@
 <div class="container">
   <div class="home-page-banner">
     <div class="video-container">
-
     <% if @feature_video %>
       <% if @feature_video.videofile.attached? %>
         <%= cl_video_tag @feature_video.videofile.key, autoplay: :autoplay, loop: :loop %>
       <% end %>
-
 
     <div class="banner-text">
       <h1><%= @feature_video.title %></h1>
@@ -21,34 +19,28 @@
         <i class="fa-solid fa-play" style="color: #ffffff;"></i>
         Play
       </a>
-
     </div>
     <% end %>
   </div>
 </div>
   <div class=home-page-heading><h1>Popular on ShowTime</h1></div>
-
   <div class="thumbnails">
     <% @top_movies.each do |video| %>
       <%= render 'videos/video', video: video %>
-    <% end %>
+      <% end %>
   </div>
 
-  <div class=home-page-heading>
-    <h1>Trending TV Shows</h1>
-  </div>
+  <div class=home-page-heading><h1>Trending TV Shows</h1></div>
   <div class="thumbnails">
     <% @top_tv.each do |video| %>
-    <%= render 'videos/video', video: video %>
-    <% end %>
+      <%= render 'videos/video', video: video %>
+      <% end %>
   </div>
 
-  <div class=home-page-heading>
-    <h1>Trending Movies</h1>
-  </div>
+  <div class=home-page-heading><h1>Trending Movies</h1></div>
   <div class="thumbnails">
     <% @trending_movies.each do |video| %>
       <%= render 'videos/video', video: video %>
-    <% end %>
+      <% end %>
   </div>
  </div>
