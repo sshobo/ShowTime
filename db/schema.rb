@@ -53,13 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_132959) do
     t.index ["video_id"], name: "index_casts_on_video_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.integer "api_reference"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "crews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "studio_id", null: false
