@@ -9,11 +9,19 @@
   <div class="form-actions">
     <%= f.input :title %>
     <%= f.input :language, collection: Video::LANGUAGES %>
-    <%= f.input :video_type %>
+    <%= f.input :video_type, collection: ['Series', 'Film', 'Podcast','Live TV'] %>
     <%= f.input :genres, collection: Genre.all, label: 'Genres', input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, include_hidden: false %>
-    <%= f.input :users, collection: User.all,label_method: :first_name, label: 'Select Cast Members', input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, include_hidden: false %>
-    <%= f.input :studio_id, label: 'Select Studio (if appropriate)', collection: @studios %>
 
+    <div data-controller="cast-info">
+      <div  data-action="click->cast-info#update">
+      <%= f.input :users, collection: User.all,label_method: :full_name, label: 'Select Cast Members', input_html: {multiple: true, data: {controller: "tom-select", tom_select_options_value: {tags: true}}}, include_hidden: false %>
+      </div>
+      <div class="role-inputs" data-cast-info-target="form">
+      </div>
+    </div>
+
+
+    <%= f.input :studio_id, label: 'Select Studio (if appropriate)', collection: @studios %>
     <%= f.input :thumbnail, as: :file %>
     <%= f.input :videofile, as: :file %>
     <%= f.submit class: "btn btn-primary" %>
