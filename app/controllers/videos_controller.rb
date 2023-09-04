@@ -24,6 +24,8 @@ class VideosController < ApplicationController
   def new
     @video = Video.new
     @studios = Studio.all
+    @users = User.all
+    @genres = Genre.all
   end
 
   # GET /videos/1/edit
@@ -34,6 +36,8 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user = current_user
+    @video.users = params[:video][:users].reject(&:empty?).map(&:to_i).map { |id| User.find { |user| user[:id] == id } }
+    @video.genres = params[:video][:genres].reject(&:empty?).map(&:to_i).map { |id| Genre.find { |genre| genre[:id] == id } }
     respond_to do |format|
       if @video.save
         format.html { redirect_to dashboard_path, notice: "Video was successfully created." }
@@ -46,7 +50,10 @@ class VideosController < ApplicationController
   end
 
   # PATCH/PUT /videos/1 or /videos/1.json
+
   def update
+    @video.users = params[:video][:users].reject(&:empty?).map(&:to_i).map { |id| User.find { |user| user[:id] == id } }
+    @video.genres = params[:video][:genres].reject(&:empty?).map(&:to_i).map { |id| Genre.find { |genre| genre[:id] == id } }
     respond_to do |format|
       if @video.update(video_params)
         format.html { redirect_to video_url(@video), notice: "Video was successfully updated." }
@@ -76,6 +83,6 @@ class VideosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def video_params
-      params.require(:video).permit(:title, :views, :category, :type, :description, :language, :studio_id, :thumbnail, :videofile)
+      params.require(:video).permit(:title, :views, :genres, :type, :description, :language, :studio_id, :thumbnail, :videofile, :users)
     end
 end
