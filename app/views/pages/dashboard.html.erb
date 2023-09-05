@@ -1,69 +1,70 @@
+<div class="content">
+  <% if current_user.creator? %>
+  <h2 class="text-center">Hi, <%= current_user.first_name %></h2>
+  <h1 class="text-center"><%= "Videos uploaded by #{current_user.first_name}" %></h1>
 
-<% if current_user.creator? %>
-<h2 class="text-center">Hi, <%= current_user.first_name %></h2>
-<h1 class="text-center"><%= "Videos uploaded by #{current_user.first_name}" %></h1>
-
-  <div class="text-center">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Upload a video
-  </button>
-</div>
-
-<!-- Modal -->
-<div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Video Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'new' %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+    <div class="text-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Upload a video
+    </button>
   </div>
-</div>
-
-   <div class="thumbnails">
-     <% @videos.each do |video| %>
-     <%= render 'video', video: video %>
-     <% end %>
-  </div>
-
-
-
-
-
-<% else %>
-` <h2 class="text-center">Hi, <%= current_user.first_name %></h2>
-  <h2 class="text-center"> Register to become a creator today and join our team of <%= User.all.count %> Creators </h2>
-  <div class="text-center">
-    <%= button_to 'Switch to Creator', user_path(@user), method: :put, class: 'btn btn-primary' %>
-  </div>
-
 
   <!-- Modal -->
   <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Are you sure</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Video Details</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= render 'creator' %>
+          <%= render 'new' %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </div>`
-<% end %>
+  </div>
+
+    <div class="thumbnails">
+      <% @videos.each do |video| %>
+      <%= render 'video', video: video %>
+      <% end %>
+  </div>
+
+
+
+
+
+    <% else %>
+    ` <h2 class="text-center">Hi, <%= current_user.first_name %></h2>
+      <h2 class="text-center"> Register to become a creator today and join our team of <%= User.all.count %> Creators </h2>
+      <div class="text-center">
+        <%= button_to 'Switch to Creator', user_path(@user), method: :put, class: 'btn btn-primary' %>
+      </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Are you sure</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= render 'creator' %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>`
+    <% end %>
+</div>
