@@ -16,7 +16,8 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    @videos = Video.all
+    @videos_uploaded = Video.where(user_id: @user.id)
+    @videos = @user.videos
     @video = Video.new
     @studios = Studio.all
   end
