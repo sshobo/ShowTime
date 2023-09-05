@@ -37,6 +37,17 @@
   border-right: 1px solid black;
 }
 
+// DROPDOWN CSS
+
+.navbar-dropdown {
+  border-radius: 10px;
+  min-width: 300px;
+
+  i {
+    min-width: 34px;
+  }
+}
+
 @keyframes glowing {
   0% {
     text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);

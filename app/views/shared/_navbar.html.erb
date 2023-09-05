@@ -44,14 +44,52 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232" alt="Profile Picture" class="avatar">
             <% end %>
           </a>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to "My Dashboard", dashboard_path,  class: "dropdown-item" %>
-            <%= link_to "Content", videos_path,  class: "dropdown-item" %>
-            <%= link_to "Studios", studios_path,  class: "dropdown-item" %>
-            <%= link_to "Settings", "Settings", class: "dropdown-item" %>
-            <button data-action='click->theme-toggler#toggleTheme' class='dropdown-item'>Toggle Theme</button>
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-          </div>
+          <div class="navbar-dropdown dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-regular fa-user p-2"></i>
+                <%= link_to "Your dashboard", dashboard_path,  class: "dropdown-item" %>
+              </div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-film p-2"></i>
+                <%= link_to "ShowTime Studios", studios_path,  class: "dropdown-item" %>
+              </div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-shuffle p-2"></i>
+                <%= link_to "Switch accounts", "#",  class: "dropdown-item" %>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-toggle-on p-2"></i>
+                <button data-controller="theme-toggler" class="dropdown-item" data-action="click->theme-toggler#toggleTheme">Toggle Dark-Mode</button>
+              </div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-language p-2"></i>
+                <%= link_to "Language: English", "#",  class: "dropdown-item" %>
+              </div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-location-dot p-2"></i>
+                <%= link_to "Location: United Kingdom", "#",  class: "dropdown-item" %>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-video p-2"></i>
+                <%= link_to "Content", videos_path,  class: "dropdown-item" %>
+              </div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-bars p-2"></i>
+                <%= link_to "Settings", "#", class: "dropdown-item" %>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-circle-info p-2"></i>
+                <%= link_to "Help", "#", class: "dropdown-item" %>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-arrow-right-from-bracket p-2"></i>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </div>
         </li>
       <% else %>
         <li class="nav-item">
