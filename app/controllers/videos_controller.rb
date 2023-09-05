@@ -17,6 +17,7 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
+    @review =Review.new
     @cast = @video.users
     @roles = []
     @video.users.each_with_index do |user, index|

@@ -65,6 +65,15 @@ user_creator = User.create(
   password: "123456",
   creator: true
 )
+
+cecil = User.create(
+  first_name: "cecil",
+  last_name: "Andi",
+  email: "cecilandi@gmail.com",
+  password: "123456",
+  creator: true
+)
+
 10.times {
   name = Faker::Name.name
   name = name.split(" ")
