@@ -1,10 +1,10 @@
 <div class="content">
   <% if current_user.creator? %>
   <h2 class="text-center">Hi, <%= current_user.first_name %></h2>
-  <h1 class="text-center"><%= "Videos uploaded by #{current_user.first_name}" %></h1>
 
-    <div class="text-center">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+
+    <div class="text-center p-5">
+    <button type="button" class="btn btn-primary m5" data-toggle="modal" data-target="#exampleModalCenter">
     Upload a video
     </button>
   </div>
@@ -48,11 +48,13 @@
 
 
   <% else %>
-  ` <h2 class="text-center">Hi, <%= current_user.first_name %></h2>
-    <h2 class="text-center"> Register to become a creator today and join our team of <%= User.all.count %> Creators </h2>
-    <div class="text-center">
-      <%= button_to 'Switch to Creator', user_path(@user), method: :put, class: 'btn btn-primary' %>
-    </div>
+      <br><br><br><br><br><br><br><br><br><br><br>
+      <h2 class="text-center" style="text-align: center;">Hi, <%= current_user.first_name %></h2>
+      <h2 class="text-center"> Register to become a creator today and join our team of <%= User.all.count %> Creators </h2>
+      <div class="text-center">
+        <%= button_to 'Switch to Creator', user_path(@user), method: :put, class: 'btn btn-primary' %>
+      </div>
+  `
 
 
     <!-- Modal -->
