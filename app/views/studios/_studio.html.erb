@@ -1,0 +1,10 @@
+<div class="studio-card d-flex align-items-center bg-light col-3 ">
+  <% if studio.logo.attached? %>
+    <%= cl_image_tag studio.logo.key, class: "studio-logo", controls: true %>
+  <% else %>
+    <img src="https://w7.pngwing.com/pngs/544/558/png-transparent-shield-flat-design-icon-samurai-shield-3d-computer-graphics-logo-samurai-vector.png" alt="placeholder studio" class="studio-logo">
+  <% end %>
+  <div class="name-container px-3">
+    <h2 class="studio-title"><%= studio.name %></h2>
+  </div>
+</div>
