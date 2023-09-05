@@ -9,6 +9,7 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link nav-link-border" %>
         </li>
+        <h1 style='color: white;'><%= current_user.id %></h1>
         <li class="nav-item">
           <%= link_to "Series", videos_path, class: "nav-link nav-link-border" %>
         </li>
@@ -35,6 +36,7 @@
     </div>
     <ul class="navbar-nav me-auto">
       <% if user_signed_in? %>
+      <div class='d-none' data-theme-toggler-target='themeChoice'><%= current_user.theme_preference%></div>
         <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% if current_user.profile.attached? %>

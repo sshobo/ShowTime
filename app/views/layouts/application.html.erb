@@ -15,7 +15,7 @@
 
   </head>
 
-  <body class="<%= current_user ? "#{current_user.theme_preference}-theme" : "light-theme" %>">
+  <body class='<%= current_user ? current_user.theme_preference + '-theme' : 'light-theme'%>'>
     <div data-controller="search-videos">
       <%= render "shared/navbar" %>
       <%= yield %>

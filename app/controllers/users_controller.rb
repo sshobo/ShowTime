@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     @video = @user.videos.last
   end
 
+  def toggle_theme
+    current_user.theme_preference = current_user.theme_preference == 'dark' ? 'light' : 'dark'
+    current_user.save
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
