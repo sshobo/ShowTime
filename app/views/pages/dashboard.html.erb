@@ -4,7 +4,7 @@
 
 
     <div class="text-center p-5">
-    <button type="button" class="btn btn-primary m5" data-toggle="modal" data-target="#exampleModalCenter">
+    <button type="button" class="btn btn-flat m5" data-toggle="modal" data-target="#exampleModalCenter">
     Upload a video
     </button>
   </div>
@@ -15,7 +15,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Video Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close btn btn-flat" data-dismiss="modal" aria-label="Close" style="width">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -23,20 +23,20 @@
           <%= render 'new' %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-flat" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
 
-    <h2 class="text-center"> Videos you uploaded: <%= @videos_uploaded.count %></h2>
+    <h2 class="text-center p-4"> Videos you uploaded: <%= @videos_uploaded.count %></h2>
   <div class="thumbnails">
     <% @videos_uploaded.each do |video| %>
     <%= render 'video', video: video %>
     <% end %>
   </div>
 
-  <h2 class="text-center"> Videos you were part of: <%= @videos.count %></h2>
+  <h2 class="text-center p-4"> Videos you were part of: <%= @videos.count %></h2>
   <div class="thumbnails">
     <% @videos.each do |video| %>
     <%= render 'video', video: video %>
@@ -48,11 +48,14 @@
 
 
   <% else %>
-      <br><br><br><br><br><br><br><br><br><br><br>
-      <h2 class="text-center" style="text-align: center;">Hi, <%= current_user.first_name %></h2>
-      <h2 class="text-center"> Register to become a creator today and join our team of <%= User.all.count %> Creators </h2>
+      <br><br><br><br><br>
       <div class="text-center">
-        <%= button_to 'Switch to Creator', user_path(@user), method: :put, class: 'btn btn-primary' %>
+        <img src="https://i.ibb.co/qsjKcWR/creator-landing-page-vector-adobe.png" alt="", width="50%">
+        <h2 class="text-center" style="text-align: center;">Hi, <%= current_user.first_name %></h2>
+        <h2 class="text-center"> Register to become a creator today and join our team of <%= User.all.count %> Creators </h2>
+        <div class="text-center">
+          <%= button_to 'Switch to Creator', user_path(@user), method: :put, class: 'btn btn-flat' %>
+        </div>
       </div>
   `
 
