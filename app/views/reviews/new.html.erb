@@ -1,10 +1,10 @@
 <div class="container m-5">
-  <h1>Add a review</h1>
+  <h1>Review</h1>
 
 
   <%= simple_form_for [@video, @review] do |f| %>
     <%= f.input :content %>
     <%= f.input :rating %>
-    <%= f.submit class: "btn btn-primary button-35 create-review-button" %>
+    <%= f.submit "Review", class: "btn btn-primary button-35 create-review-button" %>
   <% end %>
 </div>
