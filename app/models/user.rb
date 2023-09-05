@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_commit :set_pfp, on: :create
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,4 +20,17 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+
+
+
+
+  def set_pfp
+    url = "https://ui-avatars.com/api/?name=#{self.first_name}+#{self.last_name}"
+    pfp = URI.open(url)
+    self.profile.attach(
+      io: pfp, # TO DO: update file
+      filename: "#{self}.jpg",
+      content_type: 'image/jpg'
+    )
+  end
 end
