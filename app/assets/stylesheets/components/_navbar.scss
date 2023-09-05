@@ -1,7 +1,16 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: black;
+  top: 0;
+
+}
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: transparent;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  // background: transparent;
+  padding: 0 20px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -53,8 +62,7 @@
 
 .navbar-item .nav-item .nav-link:hover{
   color: red;
-  background-color: #f8f9fa;
+  // background-color: #f8f9fa;
   font-weight: bold;
 
 }
-
