@@ -40,24 +40,19 @@
 
 
 <% else %>
-  <div class="overlay-banner">
-    <img src="https://images.squarespace-cdn.com/content/v1/5046b167e4b0b2bcc3a91ee3/1579641932665-GWNBHESWYL2UTUYTIFTI/image-asset.jpeg" alt="" width="100%">
-    <h2 class="text-top">Hi, <%= current_user.first_name %></h2>
-  </div>
 ` <h2 class="text-center">Hi, <%= current_user.first_name %></h2>
   <h2 class="text-center"> Register to become a creator today and join our team of <%= User.all.count %> Creators </h2>
   <div class="text-center">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Switch to Creator
-    </button>
+    <%= button_to 'Switch to Creator', user_path(@user), method: :put, class: 'btn btn-primary' %>
   </div>
+
 
   <!-- Modal -->
   <div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Tell us a bit more about yourself</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Are you sure</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

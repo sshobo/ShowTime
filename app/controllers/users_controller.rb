@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    current_user.update_column(:creator, true)
+    redirect_to '/dashboard'
+  end
   def show
     @videos = @user.videos
     @video = @user.videos.last

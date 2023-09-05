@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :videos do
     resources :reviews, only: [:new, :create]
   end
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :update]
 end
