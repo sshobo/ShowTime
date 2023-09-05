@@ -24,7 +24,7 @@
 
   <div class="d-flex justify-content-between">
     <div class="Comment">
-      <h1 style="font-family: sans-serif; color: red;">All Reviews</h1>
+      <h1 style="font-family: sans-serif;">All Reviews</h1>
       <%= link_to "New Review", new_video_review_path(@video), class: "custom-link" %>
       <div class="User-Comments">
 
@@ -49,7 +49,7 @@
     </div>
 
     <div class="Comment">
-      <h1 style="font-family: sans-serif; color: red;">Production Crew</h1>
+      <h1 style="font-family: sans-serif;">Production Crew</h1>
       <%= "This video does not have any users in it." if @cast.length == 0 %>
       <% @cast.each do |user| %>
         <%= render 'cast', user: user %>
