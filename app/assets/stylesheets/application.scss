@@ -17,13 +17,28 @@
     background: #121212;
 
     .producer-user{
-      background-color: gray;
+      background-color: rgb(63, 63, 63);
+
+      h2 {
+        color: white;
+      }
     }
 
     .producer-descript-content{
-      color:black;
+      color:white;
+      background-color: rgb(63, 63, 63);
     }
     .Comment {
-      background-color: gray;
+      background-color: rgb(63, 63, 63);
+
+      h1 {
+        color: white;
+      }
+    }
+    .navbar-item .nav-item .nav-link {
+      color: white;
+    }
+    .test-gh {
+      background-color: red;
     }
   }

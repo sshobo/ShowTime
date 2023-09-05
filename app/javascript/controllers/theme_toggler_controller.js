@@ -2,6 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="theme-toggler"
 export default class extends Controller {
+  static targets = ['themeChoice'];
+
+  connect() {
+    console.log('Dark Theme Controller ACtive');
+    console.log(this.themeChoiceTarget.innerText);
+    // if (this.themeChoiceTarget.innerText === 'dark') {
+    //   document.body.classList.add('dark-theme');
+    //   document.body.classList.remove('light-theme');
+    // }
+
+  }
 
   toggleTheme() {
     // update the UI

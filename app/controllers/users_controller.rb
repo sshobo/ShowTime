@@ -4,18 +4,28 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    if params[:query].present?
+      @users = @users.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "users/list", locals: {users: @users}, formats: [:html] }
+    end
   end
 
+  def update
+    current_user.update_column(:creator, true)
+    redirect_to '/dashboard'
+  end
   def show
     @videos = @user.videos
     @video = @user.videos.last
   end
 
   def toggle_theme
-    return unless current_user
-
-    current_user.light? ? current_user.dark! : current_user.light!
-    head :ok
+    current_user.theme_preference = current_user.theme_preference == 'dark' ? 'light' : 'dark'
+    current_user.save
   end
 
   private
