@@ -6,8 +6,15 @@ class VideosController < ApplicationController
   def index
     @videos = Video.all
     if params[:query].present?
-      @videos = @videos.where("title ILIKE ?", "%#{params[:query]}%")
+      videos_by_title = @videos.where("title ILIKE ?", "%#{params[:query]}%")
+
+      # Join videos with Videogenrejoin and genres, and filter by genre name
+      videos_by_genre = @videos.joins(:videogenrejoins, :genres).where("genres.name ILIKE ?", "%#{params[:query]}%")
+
+      # Combine the results using the union method
+      @videos = (videos_by_title + videos_by_genre).uniq
     end
+
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
