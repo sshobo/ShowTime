@@ -1,70 +1,48 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid ">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-controller='theme-toggler'>
+  <div class="d-flex justify-content-between align-items-center">
     <%= link_to "/", class: "navbar-brand" do %>
       <h1>Showtime</h1>
     <% end %>
 
-
-
-    <div data-controller="search-videos" class="input-group d-flex justify-content-between">
-       <div class="navbar-item">
-    <ul class="navbar-nav me-auto">
-  <li class="nav-item">
-    <%= link_to "Home", root_path, class: "nav-link nav-link-border" %>
-      </li>
-  <li class="nav-item">
-    <%= link_to "Series", videos_path, class: "nav-link nav-link-border" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Films", videos_path, class: "nav-link nav-link-border" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "New", videos_path, class: "nav-link nav-link-border" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "Popular", videos_path, class: "nav-link nav-link-border" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to "My Lists", videos_path, class: "nav-link" %>
-  </li>
-  <% if user_signed_in? %>
-    <!-- Your existing user-related menu items here -->
-  <% else %>
-    <!-- Your existing login link here -->
-  <% end %>
-</ul>
-    </div>
-      <% if  params[:action] != "index" %>
-        <div>
-          <%= form_with url: videos_path, method: :get, html: { class: "form-outline", data: { search_videos_target: "form" } } do |f| %>
-          <%= f.text_field :query,
-                      class: "form-control",
-                      placeholder: "Movie, TV Show..",
-                      value: params[:query],
-                      data: {
-                        search_videos_target: "input",
-                        action: "keyup->search-videos#update"
-                      }
-                      %>
-          <% end %>
-        </div>
-     <% end %>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-item">
       <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <% if current_user.profile.attached? %>
-                <%= cl_image_tag current_user.profile.key, class: "avatar", alt: "dropdown menu" %>
-              <% else %>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232" alt="Profile Picture" class="avatar">
-              <% end %>
-            </a>
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link nav-link-border" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Series", videos_path, class: "nav-link nav-link-border" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Films", videos_path, class: "nav-link nav-link-border" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "New", videos_path, class: "nav-link nav-link-border" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Popular", videos_path, class: "nav-link nav-link-border" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Lists", videos_path, class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
 
-
-            <div class="navbar-dropdown dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="m-2">
+      <input class="form-control" placeholder="Movie, TV Show.." value="" data-search-videos-target="input" data-action="keyup->search-videos#update" type="text" name="query" id="query" autocomplete="off">
+    </div>
+    <ul class="navbar-nav me-auto">
+      <% if user_signed_in? %>
+      <div class='d-none' data-theme-toggler-target='themeChoice'><%= current_user.theme_preference%></div>
+        <li class="nav-item dropdown">
+          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <% if current_user.profile.attached? %>
+              <%= cl_image_tag current_user.profile.key, class: "avatar", alt: "dropdown menu" %>
+            <% else %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232" alt="Profile Picture" class="avatar">
+            <% end %>
+          </a>
+          <div class="navbar-dropdown dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <div class="d-flex align-items-center px-2 py-1">
                 <i class="fa-regular fa-user p-2"></i>
                 <%= link_to "Your dashboard", dashboard_path,  class: "dropdown-item" %>
@@ -110,13 +88,12 @@
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
             </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
