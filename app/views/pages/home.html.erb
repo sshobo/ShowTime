@@ -5,7 +5,7 @@
       <div class="video-container">
         <% if @feature_video %>
           <% if @feature_video.videofile.attached? %>
-            <%= cl_video_tag @feature_video.videofile.key, autoplay: :autoplay, loop: :loop %>
+            <%= cl_video_tag @feature_video.videofile.key, :autoplay => true, :muted => true, :loop => true %>
           <% end %>
 
           <div class="banner-text">
