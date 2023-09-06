@@ -24,6 +24,8 @@ class VideosController < ApplicationController
 
   # GET /videos/1 or /videos/1.json
   def show
+    views = @video.views
+    @video.update_column(:views, views + 1)
     @review =Review.new
     @cast = @video.users
     @roles = []

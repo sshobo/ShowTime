@@ -53,6 +53,15 @@ Genre.destroy_all
 
 puts "Creating users..."
 
+admin = User.create(
+  first_name: "Admin",
+  last_name: "1",
+  email: "admin@showtime.com",
+  password: "123456",
+  creator: true,
+  admin: true
+)
+
 sam = User.create(
   first_name: "Samuel",
   last_name: "Shobo",
@@ -215,7 +224,7 @@ def create_video(movie, user_creator, video_type, genre)
 
   video = Video.new(
     title: movie["title"],
-    views: movie["vote_count"],
+    views: rand(10..10000),
     language: movie["original_language"],
     video_type: video_type,
     description: movie["overview"]
