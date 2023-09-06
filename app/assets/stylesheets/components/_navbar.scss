@@ -33,6 +33,18 @@
     font-family: "Lobster";
   }
 }
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: $red-scarlet;
+
+  color: red; /* Set the text color to red */
+  animation: glowing 1.5s infinite; /* Apply the glowing animation */
+
+  h1 {
+    font-family: "Lobster";
+  }}
+
 .nav-link-border {
   // margin: 0 20px;
   border-right: 1px solid black;
