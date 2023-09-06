@@ -70,7 +70,7 @@
   </div>
 
   <% if @video.user == current_user %>
-  <div class="d-flex">
+  <div class="d-flex bottom-buttons">
     <%= link_to "Edit this video", edit_video_path(@video), class: "btn-xs button-35 Edit-this-video", style: "margin-right: 15px;" %>
     <%= link_to "Back to videos", videos_path, class: "btn-xs button-35 Back-to-videos", style: "margin-right: 15px;" %>
     <%= button_to "Delete video", @video, method: :delete, class: "btn-xs button-35 Delete-video" %>
@@ -83,7 +83,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Video Details</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">New Review</h5>
         <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
