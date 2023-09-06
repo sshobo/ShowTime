@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
 
   def set_pfp
-    url = "https://ui-avatars.com/api/?name=#{self.first_name}+#{self.last_name}"
+    url = "https://ui-avatars.com/api/?name=#{self.first_name}+#{self.last_name}?size=512"
     pfp = URI.open(url)
     self.profile.attach(
       io: pfp, # TO DO: update file
