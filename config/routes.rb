@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'studios/new'
-  get 'studios/index'
-  get 'studios/show'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users
   root to: "pages#home"
 

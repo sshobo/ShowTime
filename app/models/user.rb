@@ -1,3 +1,4 @@
+require 'open-uri'
 class User < ApplicationRecord
   after_commit :set_pfp, on: :create
   # Include default devise modules. Others available are:
