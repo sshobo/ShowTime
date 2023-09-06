@@ -245,8 +245,13 @@ def create_video(movie, user_creator, video_type, genre, video_users)
   puts video.title
   video.user = user_creator
   video.users = video_users
+
   video.save
+
   if video.id.present?
+    video.reviews = create_reviews(video)
+    puts "Generating fake reviews"
+
     video_genre_join = Videogenrejoin.new
     video_genre_join.video = video
     video_genre_join.genre = genre
@@ -263,6 +268,20 @@ def create_video(movie, user_creator, video_type, genre, video_users)
     # Handle the case when the video is empty
     puts "Video is empty, cannot associate genres."
   end
+end
+
+def create_reviews(video) # returns an array of review instances
+  reviews = []
+  rand(2..6).times do
+    reviews << Review.create!(
+      rating: rand(3..5),
+      content: Faker::Adjective.positive,
+      user: User.all.sample,
+      video: video
+    )
+
+  end
+  reviews
 end
 
 puts "Creating videos..."
