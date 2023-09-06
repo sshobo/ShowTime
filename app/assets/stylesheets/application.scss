@@ -16,6 +16,23 @@
     color: #eee;
     background: #121212;
 
+    .searchbar {
+      // border-top: red 2px solid;
+      background-color: rgb(63, 63, 63) ;
+
+      .search_input {
+        color:white;
+      }
+      ::placeholder {
+        color: white;
+
+      }
+
+      .search_icon {
+        color: white;
+      }
+    }
+
     .navbar {
       background-color: black;
       box-shadow: 0 4px 6px rgba(255, 0, 0, 0.8);
