@@ -218,7 +218,7 @@ Genre.all.each do |genre|
 end
 
 # create dummy videos
-def create_video(movie, user_creator, video_type, genre)
+def create_video(movie, user_creator, video_type, genre, video_users)
 
   return if movie["backdrop_path"].nil?
 
@@ -244,6 +244,7 @@ def create_video(movie, user_creator, video_type, genre)
   end
   puts video.title
   video.user = user_creator
+  video.users = video_users
   video.save
   if video.id.present?
     video_genre_join = Videogenrejoin.new
@@ -281,10 +282,10 @@ puts "Creating videos..."
 # trending_tv_hash.each do |tv|
 #   create_video(tv, user_creator, "Trending TV", "tv")
 # end
-
+users = User.all
 indie_movies.each do |movie|
   random_number = rand(2)
-
+  video_users = users.sample(4)
   if random_number.zero?
     video_type = "tv"
     genre = new_releases
@@ -292,7 +293,7 @@ indie_movies.each do |movie|
     video_type = "movie"
     genre = most_popular
   end
-  create_video(movie, user_creator, video_type, genre)
+  create_video(movie, user_creator, video_type, genre, video_users)
 end
 
 puts "Creating reviews..."
@@ -314,6 +315,7 @@ Review.create!(
 puts "Displaying videos"
 
 Video.all.each do |video|
+  puts video.users
   puts "ID: #{video.id}"
   puts "User ID: #{video.user_id}"
   puts "Views: #{video.views}"

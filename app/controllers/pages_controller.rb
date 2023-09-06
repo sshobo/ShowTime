@@ -11,25 +11,25 @@ class PagesController < ApplicationController
     # @top_movies = jt.where(genres: {name: 'Epic'})
     # Take 12 samples
     @shuffled_videos = @videos.shuffle
-    @samples = @shuffled_videos.sample(12)
+    @samples = @shuffled_videos.sample(15)
 
-    @sample_a1 = @samples[0..3]
-    @sample_b1 = @samples[4..7]
-    @sample_c1 = @samples[8..11]
-
-    @shuffled_videos = @videos.shuffle
-    @samples = @shuffled_videos.sample(12)
-
-    @sample_a2 = @samples[0..3]
-    @sample_b2 = @samples[4..7]
-    @sample_c2 = @samples[8..11]
+    @sample_a1 = @samples[0..4]
+    @sample_b1 = @samples[5..9]
+    @sample_c1 = @samples[10..14]
 
     @shuffled_videos = @videos.shuffle
-    @samples = @shuffled_videos.sample(12)
+    @samples = @shuffled_videos.sample(15)
 
-    @sample_a3 = @samples[0..3]
-    @sample_b3 = @samples[4..7]
-    @sample_c3 = @samples[8..11]
+    @sample_a2 = @samples[0..4]
+    @sample_b2 = @samples[5..9]
+    @sample_c2 = @samples[10..14]
+
+    @shuffled_videos = @videos.shuffle
+    @samples = @shuffled_videos.sample(15)
+
+    @sample_a3 = @samples[0..4]
+    @sample_b3 = @samples[5..9]
+    @sample_c3 = @samples[10..14]
   end
 
   def dashboard
