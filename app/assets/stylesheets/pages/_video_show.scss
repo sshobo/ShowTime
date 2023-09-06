@@ -19,7 +19,7 @@
     color: #333;
     font-size: 18px;
     margin-bottom: 5px;
-    font-family: sans-serif;
+    font-family: Arial;
   }
 
   .producer-descript-content {
@@ -75,7 +75,7 @@
   color: #333;
   font-size: 18px;
   margin-bottom: 5px;
-  font-family: sans-serif;
+  font-family: Arial;
 }
 
 .User-Comment p {
@@ -156,9 +156,10 @@
   font-size: 18px;
   border-radius: 5px;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 20px;
 }
 
 .custom-link:hover {
