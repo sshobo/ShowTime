@@ -30,8 +30,9 @@
   </div>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="m-2">
-      <input class="form-control" placeholder="Movie, TV Show.." value="" data-search-videos-target="input" data-action="keyup->search-videos#update" type="text" name="query" id="query" autocomplete="off">
+    <div class="searchbar m-2">
+      <input class="search_input" placeholder="Movie, TV Show.." value="" data-search-videos-target="input" data-action="keyup->search-videos#update" type="text" name="query" id="query" autocomplete="off">
+      <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
     </div>
     <ul class="navbar-nav me-auto">
       <% if user_signed_in? %>
