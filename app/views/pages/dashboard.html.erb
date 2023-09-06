@@ -1,9 +1,9 @@
 <div class="content">
   <% if current_user.creator? %>
-  <h2 class="text-center">Hi, <%= current_user.first_name %></h2>
+  <h2 class="text-center p-4">Hi, <%= current_user.first_name %></h2>
 
 
-    <div class="text-center p-5">
+    <div class="text-center p-4">
     <button type="button" class="btn btn-flat m5" data-toggle="modal" data-target="#exampleModalCenter">
     Upload a video
     </button>
@@ -26,14 +26,20 @@
     </div>
   </div>
 
-    <h2 class="text-center p-4"> Videos you uploaded: <%= @videos_uploaded.count %></h2>
+    <h2 class="text-center p-4"> Videos you uploaded</h2>
+      <% if @videos_uploaded.count == 0 %>
+    <p class="text-center"><em>You don't have any uploaded videos</em></p>
+  <% end %>
   <div class="thumbnails">
     <% @videos_uploaded.each do |video| %>
     <%= render 'video', video: video %>
     <% end %>
   </div>
 
-  <h2 class="text-center p-4"> Videos you were part of: <%= @videos.count %></h2>
+  <h2 class="text-center p-4"> Videos you were part of</h2>
+  <% if @videos.count == 0 %>
+    <p class="text-center"><em>You are not part of any videos</em></p>
+  <% end %>
   <div class="thumbnails">
     <% @videos.each do |video| %>
     <%= render 'video', video: video %>

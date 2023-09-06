@@ -12,7 +12,7 @@ class StudiosController < ApplicationController
     @studio = Studio.new(studio_params)
     respond_to do |format|
       if @studio.save
-        format.html { redirect_to dashboard_path, notice: "We'll get back to you" }
+        format.html { redirect_to dashboard_path, notice: "Studio Successfully Added." }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new, status: :unprocessable_entity }
