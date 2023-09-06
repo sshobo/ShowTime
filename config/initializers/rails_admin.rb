@@ -49,4 +49,15 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model Video do
+    list do
+      field :id
+      field :title
+      field :user
+      field :views
+      field :video_type
+      field :studio
+    end
+  end
 end
