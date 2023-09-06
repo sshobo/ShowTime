@@ -14,7 +14,7 @@
         <% else %>
           <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232", class: "avatar-large", alt: "avatar-large", style: "margin: 10px;" %>
         <% end %>
-        <h2 class="ms-2"><%= "#{@video.user.first_name} #{@video.user.last_name}" %></h2>
+        <h3 class="ms-2"><%= "#{@video.user.first_name} #{@video.user.last_name}" %></h3>
       </div>
       <div class="producer-descript-content">
         <p style="font-family:  Arial;"><%= @video.description %></p>
@@ -24,7 +24,7 @@
 
   <div class="d-flex justify-content-between">
     <div class="Comment">
-      <h1 style="font-family: sans-serif;">All Reviews</h1>
+      <h3 style="font-family: sans-serif;">All Reviews</h3>
       <a href="" class="custom-link" data-toggle="modal" data-target="#exampleModalCenter">New Review</a>
       <div class="User-Comments">
 
@@ -33,7 +33,7 @@
             <div class="d-flex align-items-center justify-content-between w-100">
               <div class="d-flex align-items-center">
                 <%= cl_image_tag review.user.profile.key, class: 'avatar-large'%>
-                <h2 class="ms-2"><%= review.user.first_name %></h2>
+                <h3 class="ms-2"><%= review.user.first_name %></h3>
               </div>
             <div class="d-flex align-items-center">
               <% review.rating.to_i.times do %>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="Comment">
-      <h1 style="font-family: sans-serif;">Production Crew</h1>
+      <h3 style="font-family: sans-serif;">Production Crew</h3>
       <%= "This video does not have any users in it." if @cast.length == 0 %>
       <% @cast.each do |user| %>
         <%= render 'cast', user: user %>
