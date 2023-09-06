@@ -9,12 +9,24 @@
     <h1 style="font-family: sans-serif; "><%= @video.title %></h1>
     <div class="producer-user p-2">
       <div class="d-flex align-items-center">
-        <% if @video.user.profile.attached? %>
+        <% if @video.studio %>
+        <% if @video.studio.logo.attached? %>
+        <%= cl_image_tag @video.studio.logo.key, class: 'avatar-large', style: "margin: 10px;"%>
+        <% else %>
+                  <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232", class: "avatar-large", alt: "avatar-large", style: "margin: 10px;" %>
+        <% end %>
+        <% elsif @video.user.profile.attached? %>
         <%= cl_image_tag @video.user.profile.key, class: 'avatar-large', style: "margin: 10px;"%>
         <% else %>
           <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/680px-Default_pfp.svg.png?20220226140232", class: "avatar-large", alt: "avatar-large", style: "margin: 10px;" %>
         <% end %>
+
+        <% if @video.studio %>
+        <h2 class="ms-2"><%= "#{@video.studio.name}" %></h2>
+        <% else %>
         <h3 class="ms-2"><%= "#{@video.user.first_name} #{@video.user.last_name}" %></h3>
+        <% end %>
+
       </div>
       <div class="producer-descript-content">
         <p style="font-family:  Arial;"><%= @video.description %></p>
@@ -78,9 +90,6 @@
       </div>
       <div class="modal-body">
         <%= render 'new' %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
