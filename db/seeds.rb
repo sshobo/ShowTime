@@ -219,7 +219,6 @@ end
 
 # create dummy videos
 def create_video(movie, user_creator, video_type, genre)
-
   return if movie["backdrop_path"].nil?
 
   video = Video.new(

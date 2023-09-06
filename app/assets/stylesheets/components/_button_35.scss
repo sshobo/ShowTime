@@ -1,8 +1,8 @@
 .button-35 {
-  background-color: red;
+  background-color: $red-chili;
   border: none;
   color: white;
-  padding: 3px;
+  padding: 7px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -11,12 +11,14 @@
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  transition: box-shadow 0.3s ease;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
 .button-35:hover {
-  background-color: black;
+  background: black;
+  box-shadow: 0 0 15px 10px $red-chili;
 }
 .info-text {
   color: white;
