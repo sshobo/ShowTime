@@ -2,13 +2,15 @@
   margin-bottom: auto;
   margin-top: auto;
   height: 50px;
-  background-color: #353b48;
+  background-color: rgb(245, 245, 245);
   border-radius: 30px;
   padding: 10px;
+  border: black 1px solid;
   }
 
+
   .search_input{
-  color: white;
+  color: black;
   border: 0;
   outline: 0;
   background: none;
@@ -28,7 +30,7 @@
   }
 
   ::placeholder {
-    color: white;
+    color: black;
     opacity: 1; /* Firefox */
   }
   .search_icon{
