@@ -275,7 +275,7 @@ def create_reviews(video) # returns an array of review instances
   rand(2..6).times do
     reviews << Review.create!(
       rating: rand(3..5),
-      content: Faker::Adjective.positive,
+      content: Faker::Lorem.sentence(word_count: rand(2..10)).chomp('.'),
       user: User.all.sample,
       video: video
     )
