@@ -85,3 +85,4 @@ gem "cloudinary"
 #admin gem
 gem "rails_admin", "3.0"
 gem "sassc-rails"
+gem "sassc-rails"
