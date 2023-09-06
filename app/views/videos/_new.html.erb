@@ -8,7 +8,23 @@
 
   <div class="form-actions">
     <%= f.input :content  %>
-     <%= f.input :rating  %>
-    <%= f.submit class: "btn btn-flat" %>
+    <%= f.input :rating, as: :range, input_html:{ min:"1", max:"5", oninput:"updateTextInput(this.value)"}, class: "text-center"%>
+    <p id="textInput" class="text-center" value=""></p>
+
+
+    <script>
+    function updateTextInput(val) {
+              starHTML = ''
+              for (let i = 1 ; i<= val; i++){
+                starHTML += `<span class="fa fa-star checked"></span>`
+              }
+              for (let i = 1 ; i<= 5-val; i++){
+                starHTML += `<span class="fa fa-star"></span>`
+              }
+
+              document.getElementById('textInput').innerHTML=starHTML;
+            }
+    </script>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
