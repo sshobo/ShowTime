@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     if params[:query].present?
-      @users = @users.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+      @users = @users.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%").first(8)
     end
 
     respond_to do |format|
