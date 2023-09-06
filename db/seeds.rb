@@ -7,21 +7,21 @@ require 'json'
 require 'open-uri'
 require 'faker'
 
-top_rated_movies_api_url = URI("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1")
-user_serialized = URI.open(top_rated_movies_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
-top_movies_hash = JSON.parse(user_serialized)["results"]
+# top_rated_movies_api_url = URI("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1")
+# user_serialized = URI.open(top_rated_movies_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
+# top_movies_hash = JSON.parse(user_serialized)["results"]
 
-top_rated_tv_api_url = URI("https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1")
-user_serialized = URI.open(top_rated_tv_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
-top_tv_hash = JSON.parse(user_serialized)["results"]
+# top_rated_tv_api_url = URI("https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1")
+# user_serialized = URI.open(top_rated_tv_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
+# top_tv_hash = JSON.parse(user_serialized)["results"]
 
-trending_movies_api_url = URI("https://api.themoviedb.org/3/trending/movie/week?language=en-US")
-user_serialized = URI.open(trending_movies_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
-trending_movies_hash = JSON.parse(user_serialized)["results"]
+# trending_movies_api_url = URI("https://api.themoviedb.org/3/trending/movie/week?language=en-US")
+# user_serialized = URI.open(trending_movies_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
+# trending_movies_hash = JSON.parse(user_serialized)["results"]
 
-trending_tv_api_url = URI("https://api.themoviedb.org/3/trending/tv/week?language=en-US")
-user_serialized = URI.open(trending_tv_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
-trending_tv_hash = JSON.parse(user_serialized)["results"]
+# trending_tv_api_url = URI("https://api.themoviedb.org/3/trending/tv/week?language=en-US")
+# user_serialized = URI.open(trending_tv_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
+# trending_tv_hash = JSON.parse(user_serialized)["results"]
 
 movie_genres_api_url = URI("https://api.themoviedb.org/3/genre/movie/list?language=en")
 user_serialized = URI.open(movie_genres_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
@@ -30,6 +30,17 @@ movie_genres_hash = JSON.parse(user_serialized)["genres"]
 tv_genres_api_url = URI("https://api.themoviedb.org/3/genre/tv/list?language=en")
 user_serialized = URI.open(tv_genres_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
 tv_genres_hash = JSON.parse(user_serialized)["genres"]
+
+indie_movies = []
+
+start_page = 480
+end_page = 500
+
+(start_page..end_page).each do |page|
+  indie_movies_api_url = URI("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=#{page}&sort_by=popularity.asc")
+  user_serialized = URI.open(indie_movies_api_url, 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ZWMzOWEwNTViN2IwNGYxM2RlZGRlYWEzYTMxNjA0YiIsInN1YiI6IjY0ZWUwNzc5ODM5MDE4MDExZjhlZjA2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S6nNDVApwZoTYIzDMEhfRbdSH6otKXYIPH8H_8uM-dg').read
+  indie_movies += JSON.parse(user_serialized)["results"]
+end
 
 
 puts "Cleaning database..."
@@ -163,15 +174,47 @@ feature_video.videofile.attach(
 )
 
 
+
+
+puts "Creating genres..."
+
+new_releases = Genre.create(
+  name: "New Releases"
+)
+
+most_popular = Genre.create(
+  name: "Most Popular"
+)
+
+# top_movie = Genre.new(
+#   name: "Top Movie"
+# )
+
+# top_tv = Genre.new(
+#   name: "Top TV"
+# )
+
+movie_genres_hash.each do |genre|
+  create_genre(genre)
+end
+
+tv_genres_hash.each do |genre|
+  create_genre(genre)
+end
+
+Genre.all.each do |genre|
+  puts "Name: #{genre.name}"
+  puts "Api_id: #{genre.api_id}"
+  puts "--------------------------------"
+end
+
 # create dummy videos
-def create_video(movie, user_creator, genre, video_type)
-  if video_type == "movie"
-    title = movie["title"]
-  else
-    title = movie["name"]
-  end
+def create_video(movie, user_creator, video_type, genre)
+
+  return if movie["backdrop_path"].nil?
+
   video = Video.new(
-    title: title,
+    title: movie["title"],
     views: movie["vote_count"],
     language: movie["original_language"],
     video_type: video_type,
@@ -194,10 +237,9 @@ def create_video(movie, user_creator, genre, video_type)
   video.user = user_creator
   video.save
   if video.id.present?
-    genre_search = Genre.where(name: genre)
     video_genre_join = Videogenrejoin.new
     video_genre_join.video = video
-    video_genre_join.genre = genre_search[0]
+    video_genre_join.genre = genre
     video_genre_join.save
 
     movie["genre_ids"].each do |genre_id|
@@ -213,54 +255,35 @@ def create_video(movie, user_creator, genre, video_type)
   end
 end
 
-puts "Creating genres..."
-
-# top_movie = Genre.new(
-#   name: "Top Movie"
-# )
-
-# top_tv = Genre.new(
-#   name: "Top TV"
-# )
-
-trending_movie = Genre.create(
-  name: "Trending Movie"
-)
-
-trending_tv = Genre.create(
-  name: "Trending TV"
-)
-
-
-puts "Creating genres..."
-
-movie_genres_hash.each do |genre|
-  create_genre(genre)
-end
-
-tv_genres_hash.each do |genre|
-  create_genre(genre)
-end
-
-Genre.all.each do |genre|
-  puts "Name: #{genre.name}"
-  puts "Api_id: #{genre.api_id}"
-  puts "--------------------------------"
-end
-
 puts "Creating videos..."
 
 # top_movies_hash.each do |movie|
 #   create_video(movie, user_creator, "Top Movie", "movie")
 # end
-trending_movies_hash.each do |movie|
-  create_video(movie, user_creator, "Trending Movie", "movie")
-end
+
+# trending_movies_hash.each do |movie|
+#   create_video(movie, user_creator, "Trending Movie", "movie")
+# end
+
 # top_tv_hash.each do |tv|
 #   create_video(tv, user_creator, "Top TV", "tv")
 # end
-trending_tv_hash.each do |tv|
-  create_video(tv, user_creator, "Trending TV", "tv")
+
+# trending_tv_hash.each do |tv|
+#   create_video(tv, user_creator, "Trending TV", "tv")
+# end
+
+indie_movies.each do |movie|
+  random_number = rand(2)
+
+  if random_number.zero?
+    video_type = "tv"
+    genre = new_releases
+  else
+    video_type = "movie"
+    genre = most_popular
+  end
+  create_video(movie, user_creator, video_type, genre)
 end
 
 puts "Creating reviews..."
