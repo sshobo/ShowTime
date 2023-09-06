@@ -9,9 +9,27 @@ class PagesController < ApplicationController
     # @top_tv = jt.where(genres: {name: 'Thriller'})
     # @trending_movies = jt.where(genres: {name: 'Epic'})
     # @top_movies = jt.where(genres: {name: 'Epic'})
-    @top_tv = @videos.sample(5)
-    @trending_movies = @videos.sample(5)
-    @top_movies = @videos.sample(5)
+    # Take 12 samples
+    @shuffled_videos = @videos.shuffle
+    @samples = @shuffled_videos.sample(12)
+
+    @sample_a1 = @samples[0..3]
+    @sample_b1 = @samples[4..7]
+    @sample_c1 = @samples[8..11]
+
+    @shuffled_videos = @videos.shuffle
+    @samples = @shuffled_videos.sample(12)
+
+    @sample_a2 = @samples[0..3]
+    @sample_b2 = @samples[4..7]
+    @sample_c2 = @samples[8..11]
+
+    @shuffled_videos = @videos.shuffle
+    @samples = @shuffled_videos.sample(12)
+
+    @sample_a3 = @samples[0..3]
+    @sample_b3 = @samples[4..7]
+    @sample_c3 = @samples[8..11]
   end
 
   def dashboard

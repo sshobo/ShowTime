@@ -20,33 +20,145 @@
       </div>
     </div>
   </div>
-  <div class="list-container">
-    <div class="home-page-heading">
-      <h1>Popular on ShowTime</h1>
+  <div style="overflow: hidden; padding: 50px 20px 100px 20px">
+   <div class="home-page-heading">
+    <h1>New Realeses<h1>
+   </div>
+   <div id="carouselExampleIndicators" class="carousel slide container-fluid" data-ride="carousel">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center align-items-center">
+        <div class="carousel-inner" style="overflow: visible;">
+          <div class="carousel-item active">
+            <div class="index-container">
+              <div class="thumbnails">
+                <% @sample_a1.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="index-container">
+              <div class="thumbnails">
+                <%  @sample_b1.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="index-container">
+              <div class="thumbnails">
+                <%  @sample_c1.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="thumbnails">
-      <% @top_movies.each do |video| %>
-        <%= render 'videos/video', video: video %>
-      <% end %>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+   </div>
+   <div class="home-page-heading">
+    <h1>Most Popular<h1>
+   </div>
+   <div id="carouselExampleIndicators" class="carousel slide container-fluid" data-ride="carousel">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center align-items-center">
+        <div class="carousel-inner" style="overflow: visible;">
+          <div class="carousel-item active">
+            <div class="index-container">
+              <div class="thumbnails">
+                <% @sample_a2.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="index-container">
+              <div class="thumbnails">
+                <%  @sample_b2.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="index-container">
+              <div class="thumbnails">
+                <%  @sample_c2.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="home-page-heading">
-      <h1>Trending TV Shows</h1>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+   </div>
+   <div class="home-page-heading">
+    <h1>Recomendations<h1>
+   </div>
+   <div id="carouselExampleIndicators" class="carousel slide container-fluid" data-ride="carousel">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center align-items-center">
+        <div class="carousel-inner" style="overflow: visible;">
+          <div class="carousel-item active">
+            <div class="index-container">
+              <div class="thumbnails">
+                <% @sample_a3.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="index-container">
+              <div class="thumbnails">
+                <%  @sample_b3.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="index-container">
+              <div class="thumbnails">
+                <%  @sample_c3.each do |video| %>
+                  <%= render "video", video: video %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="thumbnails">
-      <% @top_tv.each do |video| %>
-        <%= render 'videos/video', video: video %>
-      <% end %>
-    </div>
-
-    <div class="home-page-heading">
-      <h1>Trending Movies</h1>
-    </div>
-    <div class="thumbnails">
-      <% @trending_movies.each do |video| %>
-        <%= render 'videos/video', video: video %>
-      <% end %>
-    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+   </div>
   </div>
 </div>
 <br>
