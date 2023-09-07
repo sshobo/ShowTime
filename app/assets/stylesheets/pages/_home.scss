@@ -34,13 +34,14 @@
   }
 
   .video-container {
-    height: 625px; //calc(100vh - 82px); // depends on height of navabar
+    height: 785px; //calc(100vh - 82px); // depends on height of navabar
     // @media only screen and (min-width: 1300px) {
     //   height: 600px;
     // }
     display: flex;
     align-items: center;
     margin-bottom: 7px;
+    margin-top: 65px;
     position: relative;
   }
 
@@ -58,6 +59,7 @@
     text-align: left;
     margin-left: 50px;
     width: 450px;
+    background: radial-gradient(black, transparent);
   }
 }
 
