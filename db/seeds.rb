@@ -53,14 +53,7 @@ Genre.destroy_all
 
 puts "Creating users..."
 
-admin = User.create(
-  first_name: "Admin",
-  last_name: "1",
-  email: "admin@showtime.com",
-  password: "123456",
-  creator: true,
-  admin: true
-)
+
 
 sam = User.create(
   first_name: "Samuel",
@@ -396,3 +389,12 @@ User.all.each do |user|
   puts "Gmail: #{user.email}"
   puts "--------------------------------"
 end
+
+admin = User.create(
+  first_name: "Admin",
+  last_name: "1",
+  email: "admin@showtime.com",
+  password: "123456",
+  creator: true,
+  admin: true
+)
