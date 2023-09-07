@@ -133,6 +133,10 @@ user_creator.profile.attach(
 puts "Creating studios..."
 
 le_wagon = Studio.create(name: "LW Studios")
+wunderbar = Studio.create(name: "Wunderbar Films ")
+vff = Studio.create(name: "Visual Film Factory")
+red_giant = Studio.create(name: "Red Giant Movies")
+lyca = Studio.create(name: "Lyca Productions")
 
 # create genre method
 def create_genre(genre)
@@ -164,10 +168,10 @@ puts "Creating feature video..."
 feature_video = Video.create(
   user: sam,
   views: 0,
-  title: "The Office US",
+  title: "1302 Not 90210",
   language: 'English',
   video_type: 'Film',
-  description: "A motley group of office workers go through hilarious misadventures at the Scranton, Pennsylvania, branch of the Dunder Mifflin Paper Company.",
+  description: "Follow the journey of the 40 students from all walks of life - some ex-strippers, some ex-homeless - as they go from zero to code hero in 9 weeks.",
   studio: le_wagon
 )
 
@@ -177,9 +181,9 @@ feature_video.thumbnail.attach(
   content_type: 'image/jpeg'
 )
 feature_video.videofile.attach(
-  io: File.open('app/assets/images/the_office_us.mp4'), # TO DO: update file
-  filename: 'the_office_us.mp4',
-  content_type: 'video/mp4'
+  io: File.open('app/assets/images/LeWagon_2.mov'), # TO DO: update file
+  filename: 'LeWagon_2.mov',
+  content_type: 'video/mov'
 )
 
 
@@ -217,8 +221,9 @@ Genre.all.each do |genre|
   puts "--------------------------------"
 end
 
-# create dummy videos
-def create_video(movie, user_creator, video_type, genre)
+
+def create_video(movie, user_creator, video_type, genre, video_users)
+
   return if movie["backdrop_path"].nil?
 
   video = Video.new(
@@ -226,7 +231,8 @@ def create_video(movie, user_creator, video_type, genre)
     views: rand(10..10000),
     language: movie["original_language"],
     video_type: video_type,
-    description: movie["overview"]
+    description: movie["overview"],
+    studio: Studio.all.sample
   )
   thumbnail_url = "https://image.tmdb.org/t/p/w500#{movie["backdrop_path"]}"
   begin
@@ -243,8 +249,14 @@ def create_video(movie, user_creator, video_type, genre)
   end
   puts video.title
   video.user = user_creator
+  video.users = video_users
+
   video.save
+
   if video.id.present?
+    video.reviews = create_reviews(video)
+    puts "Generating fake reviews"
+
     video_genre_join = Videogenrejoin.new
     video_genre_join.video = video
     video_genre_join.genre = genre
@@ -263,6 +275,26 @@ def create_video(movie, user_creator, video_type, genre)
   end
 end
 
+def create_reviews(video) # returns an array of review instances
+  reviews = []
+  rand(2..6).times do
+    reviews << Review.create!(
+      rating: rand(3..5),
+      content: Faker::Lorem.sentence(word_count: rand(2..10)).chomp('.'),
+      user: User.all.sample,
+      video: video
+    )
+
+  end
+  reviews
+end
+
+# def create_studios(video)
+#   Studio.create!(
+#     name: Faker::Company.name + " " + ["Productions","Studios","Pictures"].sample,
+#     video: video
+#   )
+# end
 puts "Creating videos..."
 
 # top_movies_hash.each do |movie|
@@ -280,10 +312,10 @@ puts "Creating videos..."
 # trending_tv_hash.each do |tv|
 #   create_video(tv, user_creator, "Trending TV", "tv")
 # end
-
+users = User.all
 indie_movies.each do |movie|
   random_number = rand(2)
-
+  video_users = users.sample(4)
   if random_number.zero?
     video_type = "tv"
     genre = new_releases
@@ -291,7 +323,7 @@ indie_movies.each do |movie|
     video_type = "movie"
     genre = most_popular
   end
-  create_video(movie, user_creator, video_type, genre)
+  create_video(movie, user_creator, video_type, genre, video_users)
 end
 
 puts "Creating reviews..."
@@ -313,6 +345,7 @@ Review.create!(
 puts "Displaying videos"
 
 Video.all.each do |video|
+  puts video.users
   puts "ID: #{video.id}"
   puts "User ID: #{video.user_id}"
   puts "Views: #{video.views}"

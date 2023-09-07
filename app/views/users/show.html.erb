@@ -25,7 +25,7 @@
 </div>
 
 <% if @user.creator? %>
-  <h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name%>'s Top 3 Picks</h4>
+  <h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name.strip%>'s Top 3 Picks</h4>
 
   <div class="container d-flex my-4 py-5 justify-content-around">
     <div class="top-3 mx-3">
@@ -39,14 +39,40 @@
     </div>
   </div>
 
-  <h4 class="text-center">All other videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
+  <h4 class="text-center p-5 mt-5">videos uploaded by <%= @user.first_name + " " + @user.last_name %></h4>
+    <% if @videos_uploaded.count == 0 %>
+    <p class="text-center"><em><%= @user.first_name + " " + @user.last_name %> does not have any videos</em></p>
+    <% end %>
 
+  <div class="thumbnails">
+    <% @videos_uploaded.each do |video| %>
+    <%= render 'video', video: video %>
+    <% end %>
+  </div>
+
+  <h4 class="text-center p-5 mt-5">All other videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
+
+    <% if @videos.count == 0 %>
+    <p class="text-center"><em><%= @user.first_name + " " + @user.last_name %> is not part of any videos</em></p>
+    <% end %>
+  <div class="thumbnails">
+    <% @videos.each do |video| %>
+    <%= render 'video', video: video %>
+    <% end %>
+  </div>
+
+  <% else %>
+
+  <br><br>
+
+  <h4 class="text-center p-5 mt-5">All videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
+    <% if @videos.count == 0 %>
+    <p class="text-center"><em><%= @user.first_name + " " + @user.last_name %> is not part of any videos</em></p>
+    <% end %>
 
   <div class="thumbnails">
     <% @videos.each do |video| %>
     <%= render 'video', video: video %>
     <% end %>
   </div>
-  <% else %>
-  <h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name + " " + @user.last_name %> is not a creator</h4>
 <% end %>

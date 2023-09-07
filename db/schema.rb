@@ -104,8 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_133619) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "creator", default: false, null: false
-    t.integer "theme_preference", default: 0
     t.text "bio"
+    t.integer "theme_preference", default: 0
     t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

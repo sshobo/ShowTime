@@ -76,6 +76,12 @@
                 <i class="fa-solid fa-video p-2"></i>
                 <%= link_to "Content", videos_path,  class: "dropdown-item" %>
               </div>
+              <% if current_user.admin? %>
+              <div class="d-flex align-items-center px-2 py-1">
+                <i class="fa-solid fa-database p-2"></i>
+                <%= link_to "Admin Panel", rails_admin_path,  class: "dropdown-item" %>
+              </div>
+              <% end %>
               <div class="d-flex align-items-center px-2 py-1">
                 <i class="fa-solid fa-bars p-2"></i>
                 <%= link_to "Settings", "#", class: "dropdown-item" %>

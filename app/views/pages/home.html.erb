@@ -6,6 +6,7 @@
         <% if @feature_video %>
           <% if @feature_video.videofile.attached? %>
             <%= cl_video_tag @feature_video.videofile.key, :autoplay => true, :muted => true, :loop => true %>
+            <div class="gradient-overlay"></div>
           <% end %>
 
           <div class="banner-text">
@@ -20,9 +21,9 @@
       </div>
     </div>
   </div>
-  <div style="overflow: hidden; padding: 50px 20px 100px 20px">
+  <div style="overflow: hidden; padding: 0px 0px 100px 0px">
    <div class="home-page-heading">
-    <h1>New Realeses<h1>
+    <h1>New Releases<h1>
    </div>
    <div id="carouselExampleIndicators" class="carousel slide container-fluid" data-ride="carousel">
     <div class="row">
@@ -114,7 +115,7 @@
     </a>
    </div>
    <div class="home-page-heading">
-    <h1>Recomendations<h1>
+    <h1>Recommendations<h1>
    </div>
    <div id="carouselExampleIndicators" class="carousel slide container-fluid" data-ride="carousel">
     <div class="row">

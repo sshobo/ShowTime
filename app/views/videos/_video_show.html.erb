@@ -3,7 +3,7 @@
 <% if video.videofile.attached? %>
   <%= cl_video_tag video.videofile.key, class: "show-video", :controls => true %>
 <% else %>
-  <video autoplay loop muted class=""  >
+  <video autoplay loop muted controls class=""  >
       <source src="<%= asset_path 'opening_video.mp4' %>" type="video/mp4">
       Your browser does not support the video tag.
   </video>

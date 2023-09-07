@@ -1,0 +1,13 @@
+$primary: #282828; // Colours nav bar, side links & primary buttons
+$info: #ff2400; // Colours secondary buttons
+$danger: #ff2400; // Colours part of boolean selector
+$warning: #ff2400;
+$success: #ff2400;
+$bg-light: #282828;
+
+// Force light color for top-nav links
+$navbar-dark-color: white;
+
+// Contrast ratio used to calculate color for text within elements (ie. buttons)
+// https://getbootstrap.com/docs/5.0/customize/sass/#color-contrast
+$min-contrast-ratio: 2;
