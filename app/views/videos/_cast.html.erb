@@ -1,4 +1,4 @@
-<%= link_to user_path(user) , class: "text-decoration-none" do %>
+<%= link_to user_path(user, role: @video.casts.find_by(user: user.id)[:role] ) , class: "text-decoration-none" do %>
 <div class="User-Comment">
   <div class="d-flex align-items-center">
       <% if user.profile.attached? %>
