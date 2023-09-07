@@ -164,10 +164,10 @@ puts "Creating feature video..."
 feature_video = Video.create(
   user: sam,
   views: 0,
-  title: "The Office US",
+  title: "1302 Not 90210",
   language: 'English',
   video_type: 'Film',
-  description: "A motley group of office workers go through hilarious misadventures at the Scranton, Pennsylvania, branch of the Dunder Mifflin Paper Company.",
+  description: "Follow the journey of the 40 students from all walks of life - some ex-strippers, some ex-homeless - as they go from zero to code hero in 9 weeks.",
   studio: le_wagon
 )
 
@@ -177,9 +177,9 @@ feature_video.thumbnail.attach(
   content_type: 'image/jpeg'
 )
 feature_video.videofile.attach(
-  io: File.open('app/assets/images/the_office_us.mp4'), # TO DO: update file
-  filename: 'the_office_us.mp4',
-  content_type: 'video/mp4'
+  io: File.open('app/assets/images/LeWagon_2.mov'), # TO DO: update file
+  filename: 'LeWagon_2.mov',
+  content_type: 'video/mov'
 )
 
 
