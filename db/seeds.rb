@@ -196,8 +196,10 @@ feature_video.videofile.attach(
 )
 
 feature_video.users = feature_video_cast
-feature_video.reviews = create_reviews(feature_video)
-
+feature_roles = ['Backend Dev', 'Data Scientist', 'Founder', 'Frontend Dev', 'Product Manager']
+feature_video.casts.each_with_index do |cast, index|
+  cast.update_column(:role, feature_roles[index])
+end
 puts "Creating genres..."
 
 new_releases = Genre.create(
@@ -264,6 +266,7 @@ def create_video(movie, user_creator, video_type, genre, video_users)
 
   if video.id.present?
     video.reviews = create_reviews(video)
+    video.casts = set_cast(video)
     puts "Generating fake reviews"
 
     video_genre_join = Videogenrejoin.new
@@ -284,6 +287,8 @@ def create_video(movie, user_creator, video_type, genre, video_users)
   end
 end
 
+
+
 def create_reviews(video) # returns an array of review instances
   reviews = []
   rand(2..6).times do
@@ -296,6 +301,13 @@ def create_reviews(video) # returns an array of review instances
 
   end
   reviews
+end
+
+def set_cast(video)
+  roles = ["Actor", "Actor", "Actor", "Producer", "Director", "Videographer", "Cinematographer", "Writer", "Screenplay", "Writer", "Composer"]
+  video.casts.each do |cast|
+    cast.update_column(:role, roles.sample)
+  end
 end
 
 # def create_studios(video)
