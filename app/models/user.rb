@@ -21,10 +21,6 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-
-
-
-
   def set_pfp
     url = "https://ui-avatars.com/api/?name=#{self.first_name}+#{self.last_name}?size=512"
     pfp = URI.open(url)

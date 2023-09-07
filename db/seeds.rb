@@ -94,33 +94,16 @@ cecil = User.create(
   creator: true
 )
 
-10.times {
-  name = Faker::Name.name
-  name = name.split(" ")
-  first_name = name[0]
-  last_name = name[1]
+ 15.times {
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
   email = "#{first_name}#{last_name}@gmail.com"
   User.create(
     first_name: first_name,
     last_name: last_name,
     email: email,
     password: "123456",
-    creator: true
-  )
- }
-
- 10.times {
-  name = Faker::Name.name
-  name = name.split(" ")
-  first_name = name[0]
-  last_name = name[1]
-  email = "#{first_name}#{last_name}@gmail.com"
-  User.create(
-    first_name: first_name,
-    last_name: last_name,
-    email: email,
-    password: "123456",
-    creator: false
+    creator: [false, true].sample
   )
  }
 
@@ -302,8 +285,12 @@ puts "Creating videos..."
 #   create_video(tv, user_creator, "Trending TV", "tv")
 # end
 users = User.all
+user_creators = users.where(creator: true)
+puts user_creators
 indie_movies.each do |movie|
   random_number = rand(2)
+  random_number2 = rand(user_creators.length)
+  video_creator = user_creators[random_number2]
   video_users = users.sample(4)
   if random_number.zero?
     video_type = "tv"
@@ -312,7 +299,7 @@ indie_movies.each do |movie|
     video_type = "movie"
     genre = most_popular
   end
-  create_video(movie, user_creator, video_type, genre, video_users)
+  create_video(movie, video_creator, video_type, genre, video_users)
 end
 
 puts "Creating reviews..."
