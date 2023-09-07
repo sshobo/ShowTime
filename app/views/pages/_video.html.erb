@@ -5,7 +5,7 @@
         <% if video.thumbnail.attached? %>
           <%= cl_image_tag video.thumbnail.key, class: "video-thumbnail", height: 150, width: 200, controls: true %>
         <% else %>
-          <img src="/app/assets/images/Blvck.jpg" alt="placeholder thumbnail" class="video-thumbnail">
+          <img src="https://img.freepik.com/free-photo/old-black-background-grunge-texture-dark-wallpaper-blackboard-chalkboard-room-wall_1258-28312.jpg?q=10&h=200" alt="video thumbnail">
         <% end %>
         <div class="title-container">
           <h2 class="video-title"><%= video.title %></h2>
