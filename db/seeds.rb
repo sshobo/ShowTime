@@ -94,6 +94,15 @@ cecil = User.create(
   creator: true
 )
 
+phillipe_demo = User.create(
+  first_name: "Phillipe",
+  last_name: "John",
+  email: "phillipe@gmail.com",
+  password: "123456",
+  creator: false
+)
+
+
  15.times {
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -116,10 +125,15 @@ user_creator.profile.attach(
 puts "Creating studios..."
 
 le_wagon = Studio.create(name: "LW Studios")
+le_wagon.logo.attach(io: URI.open("https://www.pngkit.com/png/detail/157-1573071_about-le-wagon-le-wagon-logo.png"), filename: "lewagon-logo.jpg", content_type: 'image/jpg')
 wunderbar = Studio.create(name: "Wunderbar Films ")
+wunderbar.logo.attach(io: URI.open("https://pbs.twimg.com/profile_images/437065258851508224/oFhhY_JC_400x400.jpeg"), filename: "wunderbar-logo.jpg", content_type: 'image/jpg')
 vff = Studio.create(name: "Visual Film Factory")
+vff.logo.attach(io: URI.open("https://upload.wikimedia.org/wikipedia/en/f/f8/Vishal_Film_Factory_logo.jpg"), filename: "vff-logo.jpg", content_type: 'image/jpg')
 red_giant = Studio.create(name: "Red Giant Movies")
-lyca = Studio.create(name: "Lyca Productions")
+red_giant.logo.attach(io: URI.open("https://yt3.googleusercontent.com/fhKwYc0YH7Vf_cDMfWo1WZvS5XaMu4I2nak7g8FCCRGAvjqsmWDA3NdWXK8RUkut9Oa5twKwtA=s900-c-k-c0x00ffffff-no-rj"), filename: "red-giant-logo.jpg", content_type: 'image/jpg')
+two_d = Studio.create(name: "2D Entertainment")
+two_d.logo.attach(io: URI.open("https://live.staticflickr.com/1772/28113575867_f921b7fbe8_b.jpg"), filename: "2d-logo.jpg", content_type: 'image/jpg')
 
 # create genre method
 def create_genre(genre)
