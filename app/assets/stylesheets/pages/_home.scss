@@ -59,7 +59,9 @@
     text-align: left;
     margin-left: 50px;
     width: 450px;
-    background: radial-gradient(black, transparent);
+    // background: radial-gradient(black, transparent, transparent);
+    background-color: rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px 10px rgba(0,0,0,0.1);
   }
 }
 
