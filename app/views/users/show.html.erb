@@ -15,7 +15,8 @@
 
       <div class="user-info mx-4 align-items-center align-middle my-auto">
         <h4 class="info-text"><%= @user.first_name + " " + @user.last_name %></h4>
-        <h4 class="info-text"><%= "Actor" %></h4>
+        <h4 class="info-text"><%= @user.email %></h4>
+        <h4 class="info-text"><%= @user.casts.pluck(:role).compact.uniq.first(3).join(", ") %></h4>
       </div>
 
     </div>
