@@ -70,7 +70,7 @@ sam = User.create(
   creator: true
 )
 
-user_viewer = User.create(
+joan = User.create(
   first_name: "Joan",
   last_name: "Alemany",
   email: "joanviewer@gmail.com",
@@ -78,13 +78,13 @@ user_viewer = User.create(
   creator: false
 )
 
-user_creator = User.create(
-  first_name: "Phillipe",
-  last_name: "John-Jules",
-  email: "phillipecreator@gmail.com",
-  password: "123456",
-  creator: true
-)
+# user_creator = User.create(
+#   first_name: "Phillipe",
+#   last_name: "John-Jules",
+#   email: "phillipecreator@gmail.com",
+#   password: "123456",
+#   creator: true
+# )
 
 cecil = User.create(
   first_name: "cecil",
@@ -94,7 +94,7 @@ cecil = User.create(
   creator: true
 )
 
-phillipe_demo = User.create(
+phillipe = User.create(
   first_name: "Phillipe",
   last_name: "John",
   email: "phillipe@gmail.com",
@@ -102,6 +102,21 @@ phillipe_demo = User.create(
   creator: false
 )
 
+abhishek = User.create(
+  first_name: "Abhishek",
+  last_name: "Mahendran",
+  email: "abhishekmy1301@gmail.com",
+  password: "123456",
+  creator: false
+)
+
+feature_video_cast = [abhishek, joan, sam, phillipe, cecil]
+
+phillipe.profile.attach(
+  io: File.open('app/assets/images/menace2society.jpg'), # TO DO: update file
+  filename: 'm2c.jpg',
+  content_type: 'image/jpg'
+)
 
  15.times {
   first_name = Faker::Name.first_name
@@ -116,11 +131,8 @@ phillipe_demo = User.create(
   )
  }
 
-user_creator.profile.attach(
-  io: File.open('app/assets/images/menace2society.jpg'), # TO DO: update file
-  filename: 'm2c.jpg',
-  content_type: 'image/jpg'
-)
+
+
 
 puts "Creating studios..."
 
@@ -183,8 +195,8 @@ feature_video.videofile.attach(
   content_type: 'video/mov'
 )
 
-
-
+feature_video.users = feature_video_cast
+feature_video.reviews = create_reviews(feature_video)
 
 puts "Creating genres..."
 
