@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
   def show
     @videos = @user.videos
+    @videos_uploaded = Video.where(user_id: @user.id)
     @video = @user.videos.last
   end
 
