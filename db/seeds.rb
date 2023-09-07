@@ -133,6 +133,10 @@ user_creator.profile.attach(
 puts "Creating studios..."
 
 le_wagon = Studio.create(name: "LW Studios")
+wunderbar = Studio.create(name: "Wunderbar Films ")
+vff = Studio.create(name: "Visual Film Factory")
+red_giant = Studio.create(name: "Red Giant Movies")
+lyca = Studio.create(name: "Lyca Productions")
 
 # create genre method
 def create_genre(genre)
@@ -227,7 +231,8 @@ def create_video(movie, user_creator, video_type, genre, video_users)
     views: rand(10..10000),
     language: movie["original_language"],
     video_type: video_type,
-    description: movie["overview"]
+    description: movie["overview"],
+    studio: Studio.all.sample
   )
   thumbnail_url = "https://image.tmdb.org/t/p/w500#{movie["backdrop_path"]}"
   begin
@@ -284,6 +289,12 @@ def create_reviews(video) # returns an array of review instances
   reviews
 end
 
+# def create_studios(video)
+#   Studio.create!(
+#     name: Faker::Company.name + " " + ["Productions","Studios","Pictures"].sample,
+#     video: video
+#   )
+# end
 puts "Creating videos..."
 
 # top_movies_hash.each do |movie|
