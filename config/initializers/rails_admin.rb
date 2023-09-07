@@ -58,6 +58,8 @@ RailsAdmin.config do |config|
       field :views
       field :video_type
       field :studio
+
+      sort_by :views
     end
   end
 end
