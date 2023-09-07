@@ -138,7 +138,6 @@ vff = Studio.create(name: "Visual Film Factory")
 red_giant = Studio.create(name: "Red Giant Movies")
 lyca = Studio.create(name: "Lyca Productions")
 
-created_studios = [le_wagon,wunderbar,vff,red_giant,lyca]
 # create genre method
 def create_genre(genre)
   genre = Genre.new(
@@ -232,7 +231,8 @@ def create_video(movie, user_creator, video_type, genre, video_users)
     views: rand(10..10000),
     language: movie["original_language"],
     video_type: video_type,
-    description: movie["overview"]
+    description: movie["overview"],
+    studio: Studio.all.sample
   )
   thumbnail_url = "https://image.tmdb.org/t/p/w500#{movie["backdrop_path"]}"
   begin
@@ -286,20 +286,15 @@ def create_reviews(video) # returns an array of review instances
     )
 
   end
-  Review.create!(
-    rating: rand(3..5),
-    content: Faker::Lorem.sentence(word_count: rand(2..10)).chomp('.'),
-    user: User.all.sample,
-    video: video
-  )
+  reviews
 end
 
-def create_studios(video)
-  Studio.create!(
-    name: Faker::Company.name + " " + ["Productions","Studios","Pictures"].sample,
-    video: video
-  )
-end
+# def create_studios(video)
+#   Studio.create!(
+#     name: Faker::Company.name + " " + ["Productions","Studios","Pictures"].sample,
+#     video: video
+#   )
+# end
 puts "Creating videos..."
 
 # top_movies_hash.each do |movie|
