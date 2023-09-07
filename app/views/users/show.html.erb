@@ -63,7 +63,19 @@
 
   <% else %>
 
-  <br><br>
+  <h4 class="text-center mt-5 pt-5 mb-3 pb-3"><%= @user.first_name.strip%>'s Top 3 Picks</h4>
+
+  <div class="container d-flex my-4 py-5 justify-content-around">
+    <div class="top-3 mx-3">
+      <img src="https://www.themoviedb.org/t/p/w1280/zFN3C7flx1xj3dxGEAsSK7Uz7bB.jpg" alt="" class="poster">
+    </div>
+    <div class="top-3 mx-3">
+      <img src="https://cdn.wallpapersafari.com/15/65/I2gxNP.jpg" alt="" class="poster">
+    </div>
+    <div class="top-3 mx-3">
+      <img src="https://i.pinimg.com/736x/db/00/75/db00755dac3227154d91f1435ee83ca7--logan-movie-poster-logan-movies.jpg" alt="" class="poster">
+    </div>
+  </div>
 
   <h4 class="text-center p-5 mt-5">All videos that <%= @user.first_name + " " + @user.last_name %> is part of</h4>
     <% if @videos.count == 0 %>
