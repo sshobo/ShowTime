@@ -3,7 +3,7 @@ class Video < ApplicationRecord
   belongs_to :studio, optional: true
   has_many :videogenrejoins, dependent: :destroy
   has_many :genres, through: :videogenrejoins
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :casts, dependent: :destroy
   has_many :users, through: :casts
   has_one_attached :thumbnail
