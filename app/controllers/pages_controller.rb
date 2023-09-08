@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
-    sam = User.find_by(last_name: "Shobo")
-    @feature_video = Video.find_by(user: sam)
+    # sam = User.find_by(last_name: "Shobo")
+    @feature_video = Video.find_by(title: "1302 Not 90210")
     @videos = Video.all
     # jt = Video.joins(videogenrejoins: :genre)
     # @top_tv = jt.where(genres: {name: 'Thriller'})
