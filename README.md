@@ -1,1 +1,2 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+- 👨‍💻 Welcome to Lumi's repo! 
+- 📹 Lumi is a video streaming platform for aspiring filmmakers to showcase their talent and to meet other creators to collaborate.
