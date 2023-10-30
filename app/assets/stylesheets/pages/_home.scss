@@ -84,3 +84,11 @@
   font-weight: 700;
   margin-left: 45px;
 }
+
+@media (max-width: 767px) {
+  /* Styles for screens with a maximum width of 767px (typical for mobile devices) */
+  body {
+    font-size: 16px;
+    color: blue;
+  }
+}
